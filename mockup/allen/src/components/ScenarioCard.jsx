@@ -1,44 +1,8 @@
 /* eslint-disable react/prop-types */
-const scenarios = [
-  {
-    title: "Scenario 1",
-    description: "This is a sample description.",
-    total_win: 10,
-    total_lost: 2,
-  },
-  {
-    title: "Scenario 2",
-    description: "This is a sample description.",
-    total_win: 10,
-    total_lost: 2,
-  },
-  {
-    title: "Scenario 3",
-    description: "This is a sample description.",
-    total_win: 10,
-    total_lost: 2,
-  },
-  {
-    title: "Scenario 4",
-    description: "This is a sample description.",
-    total_win: 10,
-    total_lost: 2,
-  },
-  {
-    title: "Scenario 5",
-    description: "This is a sample description.",
-    total_win: 10,
-    total_lost: 2,
-  },
-  {
-    title: "Scenario 6",
-    description: "This is a sample description.",
-    total_win: 10,
-    total_lost: 2,
-  },
-];
+import scenarioData from "../data/scenarios.json";
+const scenarios = scenarioData;
 
-export default function ScenarioCard({ handlePage }) {
+export default function ScenarioCard({ handlePage}) {
   const buttonAnimation =
     "transition-all ease-in-out hover:scale-110 active:scale-95";
   const cardInnerButton = "bg-slate-400 px-3  rounded text-white select-none";
@@ -59,7 +23,9 @@ export default function ScenarioCard({ handlePage }) {
           <div className="flex mx-auto p-5">
             <div className="px-2">
               <button className={`${cardInnerButton} ${buttonAnimation}`}>
-                <div className="m-2" onClick={handlePage}>To Challenge</div>
+                <div className="m-2" onClick={handlePage}>
+                  To Challenge
+                </div>
               </button>
             </div>
             <div className="px-2">

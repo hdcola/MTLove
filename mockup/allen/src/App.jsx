@@ -18,8 +18,8 @@ function App() {
     </div>
   );
   const challenge = (
-    <div className="flex pt-[88px] max-w-7xl mx-auto">
-      <Challenge />
+    <div className="flex flex-1 border pt-[88px] max-w-7xl mx-auto">
+      <Challenge handlePage={handlePage} />
     </div>
   );
 
