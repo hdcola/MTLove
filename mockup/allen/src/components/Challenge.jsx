@@ -1,8 +1,15 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Link } from "react-router";
+import { useParams } from "react-router-dom";
+import scenarioData from "../data/scenarios.json";
 
 export default function Challenge() {
+  const scenarios = scenarioData;
+  const params = useParams();
+  const currentId = parseInt(params.scenarioId); // 此处小坑，url中的id是字符，必须转换为数字以后才能用于筛选
+  const currentScenario = scenarios.filter((item) => item.id === currentId); // filter 返回的是[{...}]，如果需要返回{}可使用find
+
+
   const [userInput, setUserInput] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -22,21 +29,11 @@ export default function Challenge() {
       <div className="flex flex-1 border pt-[88px] max-w-7xl mx-auto">
         <div className="flex flex-1">
           <div className="w-1/3 text-wrap flex flex-col">
-            <div className="font-semibold m-4">Scenario Name</div>
+            <div className="font-semibold m-4">{currentScenario[0].title}</div>
             <div className="max-h-fit m-4">
-              Lorem ipsum dolor sit amet, nibh malis efficiendi eam id. Clita
-              labores his ea, omnium impedit mei ad, an partiendo salutandi eam.
-              Ea nam alii dolor dolorem, ne iudico vivendo duo. Eruditi fabulas
-              platonem sit et, his et veritus offendit expetenda, zril
-              dissentiunt ea mel. Putent efficiantur mel ea, ius ex civibus
-              aliquando. Ei nec euismod insolens hendrerit, at nam wisi veritus
-              sapientem. Ludus fastidii vis at. Erat fierent dissentiunt mei et,
-              in duo iisque sanctus detraxit, sea id tantas laboramus. Id nulla
-              munere tincidunt per, an minim utinam fabellas vis. Ad vocent
-              commodo albucius eam
+              {currentScenario[0].description}
             </div>
             <Link className="m-auto" to="/">
-              {" "}
               <button
                 className={`w-16 h-8 rounded bg-slate-400 text-white ${cardInnerButton} ${buttonAnimation}`}
               >

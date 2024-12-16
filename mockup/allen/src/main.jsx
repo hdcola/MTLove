@@ -12,7 +12,7 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route element={<MainPageLayout />}>
           <Route path="/" element={<Scenarios />} />
-          <Route path="challenge" element={<Challenge />} />
+          <Route path="challenge/:scenarioId" element={<Challenge />} />
         </Route>
       </Routes>
     </BrowserRouter>
