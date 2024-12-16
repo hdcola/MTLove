@@ -9,7 +9,6 @@ export default function Challenge() {
   const currentId = parseInt(params.scenarioId); // 此处小坑，url中的id是字符，必须转换为数字以后才能用于筛选
   const currentScenario = scenarios.filter((item) => item.id === currentId); // filter 返回的是[{...}]，如果需要返回{}可使用find
 
-
   const [userInput, setUserInput] = useState("");
   const [messages, setMessages] = useState([]);
 
