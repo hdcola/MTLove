@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import scenarioData from "../data/scenarios.json";
+import { Link } from "react-router";
 const scenarios = scenarioData;
 
-export default function ScenarioCard({ handlePage}) {
+export default function ScenarioCard() {
   const buttonAnimation =
-    "transition-all ease-in-out hover:scale-110 active:scale-95";
+    "transition-all ease-in-out hover:scale-105 active:scale-95";
   const cardInnerButton = "bg-slate-400 px-3  rounded text-white select-none";
 
   return (
@@ -22,11 +22,11 @@ export default function ScenarioCard({ handlePage}) {
           </div>
           <div className="flex mx-auto p-5">
             <div className="px-2">
-              <button className={`${cardInnerButton} ${buttonAnimation}`}>
-                <div className="m-2" onClick={handlePage}>
-                  To Challenge
-                </div>
-              </button>
+              <Link to="challenge">
+                <button className={`${cardInnerButton} ${buttonAnimation}`}>
+                  <div className="m-2">To Challenge</div>{" "}
+                </button>
+              </Link>
             </div>
             <div className="px-2">
               <button className={`${cardInnerButton} ${buttonAnimation}`}>
