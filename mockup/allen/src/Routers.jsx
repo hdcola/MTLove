@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import Scenarios from "./pages/Scenarios.jsx";
 import MainPageLayout from "./pages/layouts/MainPageLayout.jsx";
-import Challenge from "./components/Challenge.jsx";
+import Challenge from "./pages/Challenge.jsx";
 
 export default function Routers() {
   return (
