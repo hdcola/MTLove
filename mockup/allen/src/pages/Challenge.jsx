@@ -15,11 +15,16 @@ export default function Challenge() {
   if (!params.scenarioId || isNaN(currentId) || !currentScenario[0]) {
     return (
       <div className="flex flex-col-reverse items-center justify-center h-screen">
-        <Link to="/" className="text-2xl font-semibold text-white bg-red-500 p-2 rounded hover:scale-105 hover:bg-blue-500 ">
+        <Link
+          to="/"
+          className="text-2xl font-semibold text-white bg-red-500 p-2 rounded hover:scale-105 hover:bg-blue-500 "
+        >
           Back
         </Link>
-        <p className="text-xl font-bold pb-10 italic">- Big Brother is Watching You</p>
-        <h1 className="text-3xl font-bold text-red-500" >
+        <p className="text-xl font-bold pb-10 italic">
+          - Big Brother is Watching You
+        </p>
+        <h1 className="text-3xl font-bold text-red-500">
           Ops! 404 Page Not Found
         </h1>
         <svg
@@ -37,20 +42,20 @@ export default function Challenge() {
 
   function sendMessage() {
     if (userInput.trim() !== "") {
-      setMessages([...messages, { text: userInput, isUser: false }]);
+      setMessages([...messages, { text: userInput, isUser: true }]);
       setUserInput("");
     }
   }
 
   const buttonAnimation =
     "transition-all ease-in-out hover:scale-110 active:scale-95";
-  const cardInnerButton = "bg-slate-400 px-3  rounded text-white select-none";
+  const cardInnerButton = "bg-slate-400 px-3 rounded text-white select-none";
 
   return (
     <>
-      <div className="flex flex-1 pt-[88px] max-w-7xl mx-auto">
+      <div className="flex flex-1 pt-24 pb-2 max-w-7xl mx-auto">
         <div className="flex flex-1">
-          <div className="w-1/3 text-wrap flex flex-col">
+          <div className="w-1/3 text-wrap flex flex-col border border-gray-950">
             <div className="font-semibold m-4">{currentScenario[0].title}</div>
             <div className="min-h-96 m-4 border border-gray-950">
               <div className="p-5">{currentScenario[0].description}</div>
@@ -64,7 +69,7 @@ export default function Challenge() {
             </Link>
           </div>
           <div className="flex-1 flex flex-col">
-            <div className="flex-1 border border-gray-950">
+            <div className="flex-1 border-y border-e border-gray-950">
               {messages.map((message, index) => (
                 <div
                   key={index}
@@ -93,7 +98,7 @@ export default function Challenge() {
                       </svg>
                     </div>
                     <div
-                      className={`px-4 py-2 rounded-lg ${
+                      className={`px-4 py-2 rounded-lg first-letter:uppercase ${
                         message.isUser
                           ? "bg-blue-500 text-white"
                           : "bg-gray-200 text-gray-800"
@@ -105,7 +110,7 @@ export default function Challenge() {
                 </div>
               ))}
             </div>
-            <div className="max-h-24 p-3 flex justify-center items-center">
+            <div className="max-h-24 p-3 flex justify-center items-center border-e border-b border-gray-900">
               <textarea
                 className="border border-slate-950 min-h-8 max-h-24 w-96 pt-1 pl-1 rounded tracking-wider"
                 placeholder="Here we go..."
