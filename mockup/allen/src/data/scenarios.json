@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "The 'Story Swap' Game",
+    "description": "Imagine you and your friends or partner are at a cozy café. Each person takes turns telling a short, interesting story from their day, but here's the twist: you have to make it sound like an exciting movie scene.",
+    "total_win": 10,
+    "total_lost": 2
+  },
+  {
+    "id": 2,
+    "title": "The 'What If?' Game",
+    "description": "Sitting in a park or during a casual walk, take turns presenting hypothetical scenarios to discuss.",
+    "total_win": 10,
+    "total_lost": 2
+  },
+  {
+    "id": 3,
+    "title": "The 'Empathy Builder' Game",
+    "description": "You’re at a gathering where someone shares a problem or challenge they’re facing. You and your friend or partner take turns responding, but with the focus on truly understanding and supporting them.",
+    "total_win": 10,
+    "total_lost": 2
+  },
+  {
+    "id": 4,
+    "title": "The 'Conversation Relay' Game",
+    "description": "During a casual chat, one person starts with a random word or topic. The next person has to build a new story or point based on that word, keeping the flow natural.",
+    "total_win": 10,
+    "total_lost": 2
+  },
+  {
+    "id": 5,
+    "title": "The 'Compliment Challenge' Game",
+    "description": "Over dinner or during a casual meet-up, challenge everyone to compliment each other—but with a twist: the compliments must be specific and tied to a recent action or event.",
+    "total_win": 10,
+    "total_lost": 24
+  },
+  {
+    "id": 6,
+    "title": "Scenario 6",
+    "description": "This is a sample description.",
+    "total_win": 10,
+    "total_lost": 2
+  }
+]
