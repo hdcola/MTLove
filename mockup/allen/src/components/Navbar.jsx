@@ -13,14 +13,7 @@ export default function Navbar({ pageName }) {
           </div>
           <div className="flex">
             <div className="p-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 -960 960 960"
-                fill="currentColor"
-                className="w-8 h-8"
-              >
-                <UserIcon />
-              </svg>
+              <UserIcon />
             </div>
             <div className="flex text-center items-center">
               <p>username</p>
