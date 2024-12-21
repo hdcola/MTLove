@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router";
-import { Outlet } from "react-router";
-import { useParams } from "react-router-dom";
+import { useParams, Outlet } from "react-router-dom";
 import scenarioData from "../../data/scenarios.json";
 import ErrorPage from "../../components/ErrorPage";
+import ChallengeBtn from "../../components/ChallengeBtn";
 
 export default function ChallengeLayout() {
   const scenarios = scenarioData;
@@ -11,16 +10,11 @@ export default function ChallengeLayout() {
   const currentId = parseInt(params.scenarioId); // 此处小坑，url中的参数是字符，必须转换为数字以后才能用于筛选
   const currentScenario = scenarios.filter((item) => item.id === currentId); // filter 返回的是[{...}]，如果需要返回{}可使用find
 
-  // const [userInput, setUserInput] = useState("");
   const [messages, setMessages] = useState([]);
 
   if (!params.scenarioId || isNaN(currentId) || !currentScenario[0]) {
     return <ErrorPage />;
   }
-
-  const buttonAnimation =
-    "transition-all ease-in-out hover:scale-110 active:scale-95";
-  const cardInnerButton = "bg-slate-400 px-3 rounded text-white select-none";
 
   return (
     <>
@@ -32,13 +26,10 @@ export default function ChallengeLayout() {
             <div className="min-h-96 m-4 shadow-lg rounded-lg bg-white">
               <div className="p-5">{currentScenario[0].description}</div>
             </div>
-            <Link className="m-auto" to="/">
-              <button
-                className={`w-16 h-8 rounded bg-slate-400 text-white shadow-lg ${cardInnerButton} ${buttonAnimation}`}
-              >
-                Back
-              </button>
-            </Link>
+            <div className="flex justify-evenly m-4">
+              <ChallengeBtn name="home" />
+              <ChallengeBtn id={`${currentId}`} />
+            </div>
           </div>
           {/* 右侧区域 */}
           <Outlet context={{ messages, setMessages }} />

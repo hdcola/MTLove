@@ -21,15 +21,7 @@ export default function Finished() {
               }`}
             >
               <div className={`${message.isUser ? "pl-2" : "pr-2"}`}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                  fill="undefined"
-                >
-                  {message.isUser ? <UserIcon /> : <BotIcon />}
-                </svg>
+                {message.isUser ? <UserIcon /> : <BotIcon />}
               </div>
               <div
                 className={`px-4 py-2 rounded-lg first-letter:uppercase ${
@@ -47,10 +39,12 @@ export default function Finished() {
       <div className="max-h-24 py-3 px-8 flex items-center justify-evenly shadow-inner bg-gray-200 rounded-l-none rounded-br-lg">
         <div className="flex flex-col">
           <div>You Win / You Lose</div>
-          <div>Rounds: 5</div>
+          <div>Rounds: {messages.length}</div>
         </div>
         <div className="ml-auto flex">
-          <div className="cursor-pointer pr-5 hover:text-cyan-400 hover:font-semibold">Others&apos; Result</div>
+          <div className="cursor-pointer pr-5 hover:text-cyan-400 hover:font-semibold">
+            Others&apos; Result
+          </div>
           <span className="cursor-pointer hover:scale-105">
             <ShareIcon />
           </span>

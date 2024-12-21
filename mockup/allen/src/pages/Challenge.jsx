@@ -23,6 +23,7 @@ export default function Challenge() {
     <div className="flex-1 flex flex-col">
       {/* 对话区域 */}
       <div className="flex-1 rounded-tr-lg shadow-lg bg-gray-100 pt-8">
+        <div className="font-semibold text-xl text-center">Chat</div>
         {messages.map((message, index) => (
           <div
             key={index}
@@ -36,15 +37,7 @@ export default function Challenge() {
               }`}
             >
               <div className={`${message.isUser ? "pl-2" : "pr-2"}`}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                  fill="undefined"
-                >
-                  {message.isUser ? <UserIcon /> : <BotIcon />}
-                </svg>
+                {message.isUser ? <UserIcon /> : <BotIcon />}
               </div>
               <div
                 className={`px-4 py-2 rounded-lg first-letter:uppercase ${
@@ -61,6 +54,9 @@ export default function Challenge() {
       </div>
       {/* 输入框 */}
       <div className="max-h-24 p-3 flex justify-center items-center shadow-inner bg-gray-200 rounded-l-none rounded-br-lg">
+        <div className="pr-3 ">
+          <UserIcon />
+        </div>
         <textarea
           className="border border-slate-950 min-h-8 max-h-24 w-96 pt-1 pl-1 rounded tracking-wider"
           placeholder="Here we go..."
