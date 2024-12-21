@@ -9,11 +9,27 @@ export default function ChallengeBtn({ id, name }) {
     "transition-all ease-in-out hover:scale-110 active:scale-95";
   const cardInnerButton = "bg-slate-400 px-3 rounded text-white select-none";
   return (
-    <Link to={`${name === "home" ? "/" : isFinished ? id : `${id}/finished`}`}>
+    <Link
+      to={`${
+        name === "home" || name === "submit"
+          ? "/"
+          : isFinished
+          ? id
+          : `${id}/finished`
+      }`}
+    >
       <button
-        className={`w-16 h-8 rounded bg-slate-400 text-white shadow-lg ${cardInnerButton} ${buttonAnimation}`}
+        className={`h-8 rounded bg-slate-400 text-center text-white shadow-lg ${cardInnerButton} ${buttonAnimation}`}
       >
-        {`${name === "home" ? "Home" : isFinished ? "Back" : "Finish"}`}
+        {`${
+          name === "home"
+            ? "Home"
+            : name === "submit"
+            ? "Submit"
+            : isFinished
+            ? "Back"
+            : "Finish"
+        }`}
       </button>
     </Link>
   );

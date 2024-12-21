@@ -37,11 +37,13 @@ export default function ScenarioCard() {
         </div>
       ))}
       {/* New Scenario */}
-      <button
+
+      <Link
+        to="create"
         className={`flex flex-col h-96 border-2 justify-center items-center rounded-2xl ${buttonAnimation}`}
       >
-        <div className="text-9xl my-auto text-slate-400">+</div>
-      </button>
+        <button className="text-9xl my-auto text-slate-400">+</button>
+      </Link>
     </>
   );
 }
