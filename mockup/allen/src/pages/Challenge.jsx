@@ -19,6 +19,18 @@ export default function Challenge() {
     setUserInput(e.target.value);
   }
 
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      if (e.shiftKey) {
+        e.preventDefault();
+        setUserInput((prevInput) => prevInput + "\n");
+      } else {
+        e.preventDefault();
+        sendMessage();
+      }
+    }
+  }
+
   return (
     <div className="flex-1 flex flex-col">
       {/* 对话区域 */}
@@ -46,7 +58,12 @@ export default function Challenge() {
                     : "bg-gray-200 text-gray-800"
                 }`}
               >
-                {message.text}
+                {message.text.split("\n").map((line, index) => (
+                  <span key={index}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -62,6 +79,7 @@ export default function Challenge() {
           placeholder="Here we go..."
           value={userInput}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
         />
         <div className="px-3 flex">
           <button
