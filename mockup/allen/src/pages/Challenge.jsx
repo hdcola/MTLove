@@ -1,11 +1,11 @@
 import { UserIcon, BotIcon, SendIcon } from "../components/Icons";
 import { useOutletContext } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function Challenge() {
   const { messages, setMessages } = useOutletContext();
-
   const [userInput, setUserInput] = useState("");
+  const inputRef = useRef(null);
 
   function sendMessage() {
     if (userInput.trim() !== "") {
@@ -23,7 +23,16 @@ export default function Challenge() {
     if (e.key === "Enter") {
       if (e.shiftKey) {
         e.preventDefault();
-        setUserInput((prevInput) => prevInput + "\n");
+        setUserInput((prevInput) => {
+          const newInput = prevInput + "\n";
+          // 滚动到最底部
+          if (inputRef.current) {
+            setTimeout(() => {
+              inputRef.current.scrollTop = inputRef.current.scrollHeight;
+            }, 0);
+          }
+          return newInput;
+        });
       } else {
         e.preventDefault();
         sendMessage();
@@ -78,6 +87,7 @@ export default function Challenge() {
           className="border border-slate-950 min-h-8 max-h-24 w-96 pt-1 pl-1 rounded tracking-wider"
           placeholder="Here we go..."
           value={userInput}
+          ref={inputRef}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
         />

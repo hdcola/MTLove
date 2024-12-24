@@ -4,15 +4,15 @@ const scenarios = scenarioData;
 
 export default function ScenarioCard() {
   const buttonAnimation =
-    "transition-all ease-in-out hover:scale-105 active:scale-95";
-  const cardInnerButton = "bg-slate-400 px-3  rounded text-white select-none";
+    "transition-all ease-in-out hover:scale-110 active:scale-100";
+  const cardInnerButton = "bg-slate-400 px-3 rounded text-white select-none";
 
   return (
     <>
       {scenarios.map((item, index) => (
         <div
           key={index}
-          className={`flex flex-col border-2 h-96 rounded-2xl transition-all ease-in-out hover:scale-110`}
+          className={`flex flex-col border-2 h-96 rounded-2xl transition-all ease-in-out shadow-lg hover:scale-110`}
         >
           <div className="font-bold mx-auto my-3">{item.title}</div>
           <div className="h-60 m-3">{item.description}</div>
@@ -40,7 +40,7 @@ export default function ScenarioCard() {
 
       <Link
         to="create"
-        className={`flex flex-col h-96 border-2 justify-center items-center rounded-2xl ${buttonAnimation}`}
+        className={`flex flex-col h-96 border-2 justify-center items-center rounded-2xl shadow-lg ${buttonAnimation}`}
       >
         <button className="text-9xl my-auto text-slate-400">+</button>
       </Link>
