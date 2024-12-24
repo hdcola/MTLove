@@ -7,6 +7,8 @@ export default function Challenge() {
   const [userInput, setUserInput] = useState("");
   const inputRef = useRef(null);
 
+  console.log(inputRef);
+
   function sendMessage() {
     if (userInput.trim() !== "") {
       setMessages([...messages, { text: userInput, isUser: true }]);
