@@ -5,17 +5,58 @@
   margin-bottom: -20px;
 }
 
-.flex {
-  padding-top: 5px;
+.hi {
+  padding-top: 10px;
 
   padding-left: 20px;
 }
 
 h1 {
   padding-right: 800px;
+  font-size: x-large;
 }
 
 p {
   padding-right: 10px;
   padding-top: 10px;
+}
+
+.you {
+  padding-left: 10px;
+  padding-top: 30px;
+  width: 450px;
+}
+
+.text-lg {
+  width: 400px;
+}
+
+.text-lg {
+  padding-top: 30px;
+}
+
+h3 {
+  padding-left: 20px;
+}
+
+.win {
+  justify-content: space-between;
+}
+
+.text-2xl {
+  background-color: rgb(52, 103, 158);
+  border-radius: 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+#hihi {
+  margin-top: 20px;
+}
+
+.buttons {
+  justify-content: space-between;
+}
+
+#hihihi {
+  margin-left: 135px;
 }
