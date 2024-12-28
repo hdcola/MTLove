@@ -10,14 +10,16 @@ export default function Routers() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<MainPageLayout />}>
-          <Route index element={<Scenarios />} />
-          <Route path="create" element={<CreateNewScenario />} />
+        <Route path="mtlove">
+          <Route element={<MainPageLayout />}>
+            <Route index element={<Scenarios />} />
+            <Route path="create" element={<CreateNewScenario />} />
 
-          <Route path="challenge">
-            <Route element={<ChallengeLayout />}>
-              <Route path=":scenarioId" element={<Challenge />} />
-              <Route path=":scenarioId/finished" element={<Finished />} />
+            <Route path="challenge">
+              <Route element={<ChallengeLayout />}>
+                <Route path=":scenarioId" element={<Challenge />} />
+                <Route path=":scenarioId/finished" element={<Finished />} />
+              </Route>
             </Route>
           </Route>
         </Route>

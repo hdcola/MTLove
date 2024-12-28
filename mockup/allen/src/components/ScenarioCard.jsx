@@ -22,7 +22,7 @@ export default function ScenarioCard() {
           </div>
           <div className="flex mx-auto p-5">
             <div className="px-2">
-              <Link to={`/challenge/${item.id}`}>
+              <Link to={`challenge/${item.id}`}>
                 <button className={`${cardInnerButton} ${buttonAnimation}`}>
                   <div className="m-2">To Challenge</div>{" "}
                 </button>
