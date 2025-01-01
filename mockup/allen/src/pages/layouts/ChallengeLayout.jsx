@@ -10,7 +10,7 @@ export default function ChallengeLayout() {
   const currentId = parseInt(params.scenarioId); // 此处小坑，url中的参数是字符，必须转换为数字以后才能用于筛选
   const currentScenario = scenarios.filter((item) => item.id === currentId); // filter 返回的是[{...}]，如果需要返回{}可使用find
 
-  const id = useMessageStore((state) => state.id);
+  // const id = useMessageStore((state) => state.id);
   const setId = useMessageStore((state) => state.setId);
 
   function handleId() {
@@ -19,7 +19,7 @@ export default function ChallengeLayout() {
 
   handleId();
 
-  console.log(id);
+  // console.log(id);
 
   if (!params.scenarioId || isNaN(currentId) || !currentScenario[0]) {
     return <ErrorPage />;

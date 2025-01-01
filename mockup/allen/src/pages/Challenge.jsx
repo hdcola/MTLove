@@ -20,7 +20,7 @@ export default function Challenge() {
     if (userInput.trim() !== "") {
       setMessages([...messages, { text: userInput, isUser: true }]);
       resetUserInput();
-      console.log(messages);
+      // console.log(messages);
     }
   }
 
