@@ -12,11 +12,23 @@ export default function MainPageLayout() {
   // console.log(JSON.stringify(location, null, 2));
   const currentId = parseInt(params.scenarioId); // 此处小坑，url中的id是字符，必须转换为数字以后才能用于筛选
   const currentScenario = scenarios.filter((item) => item.id === currentId); // filter 返回的是[{...}]，如果需要返回{}可使用find
+
   let pageTitle;
-  location.pathname === "/create"
-    ? (pageTitle = "Create New Scenario")
-    : (pageTitle = currentScenario[0]?.title || "Scenarios");
-  // 可选链运算符（?.） 用于访问对象的属性或调用函数。如果使用此运算符访问的对象或调用的函数是 undefined 或 null，则表达式会短路并计算为 undefined，而不是抛出错误
+
+  switch (location.pathname) {
+    case "/mtlove/create":
+      pageTitle = "Create New Scenario";
+      break;
+    case "/mtlove/test":
+      pageTitle = "Test";
+      break;
+    case "/mtlove/game":
+      pageTitle = "Game";
+      break;
+    default:
+      pageTitle = currentScenario[0]?.title || "Scenarios";
+    // 可选链运算符（?.） 用于访问对象的属性或调用函数。如果使用此运算符访问的对象或调用的函数是 undefined 或 null，则表达式会短路并计算为 undefined，而不是抛出错误
+  }
 
   return (
     <>

@@ -21,7 +21,9 @@ export default function Navbar({ pageName }) {
               <UserIcon />
             </div>
             <div className="flex text-center items-center">
-              <p>username</p>
+              <Link to="test">
+                <p>username</p>
+              </Link>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import ChallengeLayout from "./pages/layouts/ChallengeLayout.jsx";
 import Challenge from "./pages/Challenge.jsx";
 import Finished from "./pages/Finished.jsx";
 import CreateNewScenario from "./pages/CreateNewScenario.jsx";
+import Test from "./test.jsx";
 
 export default function Routers() {
   return (
@@ -21,6 +22,8 @@ export default function Routers() {
                 <Route path=":scenarioId/finished" element={<Finished />} />
               </Route>
             </Route>
+
+            <Route path="test" element={<Test />} />
           </Route>
         </Route>
       </Routes>

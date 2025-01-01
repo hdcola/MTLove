@@ -1,14 +1,21 @@
-import { useOutletContext } from "react-router-dom";
+// import { useOutletContext } from "react-router-dom";
+import { useMessageStore } from "../store";
+import { useParams } from "react-router";
 import { UserIcon, BotIcon, ShareIcon } from "../components/Icons";
 
 export default function Finished() {
-  const { messages } = useOutletContext();
+  // const { messages } = useOutletContext();
+  const messages = useMessageStore((state) => state.messages);
+
+  const sId = Number(useParams().scenarioId);
+  const currentMessages = messages.filter((message) => message.id === sId);
+
   return (
     <div className="flex-1 flex flex-col">
       {/* 对话区域 */}
       <div className="flex-1 rounded-tr-lg shadow-lg bg-gray-100 pt-8">
         <div className="font-semibold text-xl text-center">Game Finished</div>
-        {messages.map((message, index) => (
+        {currentMessages.map((message, index) => (
           <div
             key={index}
             className={`flex ${
