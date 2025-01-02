@@ -1,21 +1,30 @@
+// import { useOutletContext } from "react-router-dom";
+import { useParams } from "react-router";
 import { UserIcon, BotIcon, SendIcon } from "../components/Icons";
-import { useOutletContext } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useMessageStore } from "../store";
+import { useRef } from "react";
 
 export default function Challenge() {
-  const { messages, setMessages } = useOutletContext();
-  const [userInput, setUserInput] = useState("");
+  // const { messages, setMessages } = useOutletContext();
+  // const [userInput, setUserInput] = useState("");
   const inputRef = useRef(null);
 
-  console.log(inputRef);
+  const messages = useMessageStore((state) => state.messages);
+  const setMessages = useMessageStore((state) => state.setMessages);
+  const userInput = useMessageStore((state) => state.userInput);
+  const resetUserInput = useMessageStore((state) => state.resetUserInput);
+  const setUserInput = useMessageStore((state) => state.setUserInput);
+  // console.log(inputRef);
 
   function sendMessage() {
     if (userInput.trim() !== "") {
       setMessages([...messages, { text: userInput, isUser: true }]);
-      setUserInput("");
-      console.log(messages);
+      resetUserInput();
+      // console.log(messages);
     }
   }
+
+  // console.log(JSON.stringify(messages, null, 2));
 
   function handleChange(e) {
     setUserInput(e.target.value);
@@ -42,12 +51,16 @@ export default function Challenge() {
     }
   }
 
+  const sId = Number(useParams().scenarioId);
+  const currentMessages = messages.filter((message) => message.id === sId);
+  // console.log(currentMessages);
+
   return (
     <div className="flex-1 flex flex-col">
       {/* 对话区域 */}
       <div className="flex-1 rounded-tr-lg shadow-lg bg-gray-100 pt-8">
         <div className="font-semibold text-xl text-center">Chat</div>
-        {messages.map((message, index) => (
+        {currentMessages.map((message, index) => (
           <div
             key={index}
             className={`flex ${

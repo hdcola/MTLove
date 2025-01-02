@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { useParams, Outlet } from "react-router-dom";
 import scenarioData from "../../data/scenarios.json";
 import ErrorPage from "../../components/ErrorPage";
 import ChallengeBtn from "../../components/ChallengeBtn";
+import { useMessageStore } from "../../store";
 
 export default function ChallengeLayout() {
   const scenarios = scenarioData;
@@ -10,7 +10,16 @@ export default function ChallengeLayout() {
   const currentId = parseInt(params.scenarioId); // 此处小坑，url中的参数是字符，必须转换为数字以后才能用于筛选
   const currentScenario = scenarios.filter((item) => item.id === currentId); // filter 返回的是[{...}]，如果需要返回{}可使用find
 
-  const [messages, setMessages] = useState([]);
+  // const id = useMessageStore((state) => state.id);
+  const setId = useMessageStore((state) => state.setId);
+
+  function handleId() {
+    return setId(currentId);
+  }
+
+  handleId();
+
+  // console.log(id);
 
   if (!params.scenarioId || isNaN(currentId) || !currentScenario[0]) {
     return <ErrorPage />;
@@ -32,7 +41,7 @@ export default function ChallengeLayout() {
             </div>
           </div>
           {/* 右侧区域 */}
-          <Outlet context={{ messages, setMessages }} />
+          <Outlet />
         </div>
       </div>
     </>
