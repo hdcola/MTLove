@@ -1,0 +1,104 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.content {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)),
+    url(background1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.icons {
+  justify-content: flex-end;
+}
+
+.title {
+  padding-left: 50px;
+  padding-top: 15px;
+  font-size: 30px;
+}
+
+.icons {
+  padding-left: 1050px;
+  padding-top: 35px;
+
+  align-items: center;
+}
+
+.nav-links {
+  gap: 65px;
+}
+
+#hi:hover {
+  color: rgb(238, 81, 199);
+  text-decoration: underline;
+}
+
+.button {
+  width: 55px;
+  height: 30px;
+  background-color: rgb(238, 81, 199);
+  padding-left: 5px;
+  border-radius: 5px;
+  padding-top: 2px;
+}
+.context {
+  font-style: italic;
+}
+
+.topic {
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  padding-top: 350px;
+}
+
+.text2 {
+  font-size: 45px;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.yi {
+  width: 150px;
+  height: 4px;
+  background-color: rgb(
+    238,
+    81,
+    199
+  ); /* Use background-color to make it visible */
+  margin: 20px auto; /* Center it horizontally and add spacing */
+}
+
+.start {
+  width: 150px;
+  height: 40px;
+  background-color: rgb(238, 81, 199);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Smooth scaling effect */
+}
+
+.start:hover,
+.button:hover {
+  transform: scale(1.15); /* Increases size by 10% */
+  transition: transform 0.3s ease; /* Smooth scaling effect */
+}
+
+.footer {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  align-items: center;
+  margin-bottom: 50px;
+}

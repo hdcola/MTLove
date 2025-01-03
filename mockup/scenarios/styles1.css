@@ -1,0 +1,54 @@
+body {
+  background-color: black;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.title {
+  padding-left: 50px;
+  padding-top: 20px;
+  font-size: 30px;
+}
+
+.icons {
+  padding-left: 790px;
+  justify-content: flex-end;
+
+  padding-top: 35px;
+
+  align-items: center;
+}
+
+.google {
+  font-size: 40px;
+  align-items: center;
+}
+
+.nav-links {
+  align-items: center;
+}
+
+.user {
+  align-items: center;
+}
+
+#hi:hover {
+  color: rgb(238, 81, 199);
+  text-decoration: underline;
+}
+
+.profile:hover {
+  color: rgb(238, 81, 199);
+}
+
+.google:hover {
+  color: rgb(238, 81, 199);
+}
+
+.hover {
+  color: rgb(238, 81, 199);
+  text-decoration: underline;
+}
