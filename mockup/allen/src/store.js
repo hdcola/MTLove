@@ -42,6 +42,11 @@ export const useMessageStore = create((set) => ({
   setUserInput: (value) => {
     set({ userInput: value });
   },
+  changeline: () => {
+    set((state) => ({
+      userInput: state.userInput + "\n",
+    }));
+  },
   resetUserInput: () => {
     set({ userInput: "" });
   },
