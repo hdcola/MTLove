@@ -1,0 +1,359 @@
+body {
+  background-color: black;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Georgia, serif;
+}
+
+.title {
+  padding-left: 50px;
+  padding-top: 20px;
+  font-size: 30px;
+}
+
+.icons {
+  padding-left: 790px;
+  justify-content: flex-end;
+
+  padding-top: 35px;
+
+  align-items: center;
+}
+
+.google {
+  font-size: 40px;
+  align-items: center;
+}
+
+.nav-links {
+  align-items: center;
+}
+
+.user {
+  align-items: center;
+}
+
+#hi:hover {
+  color: rgb(238, 81, 199);
+  text-decoration: underline;
+}
+
+.profile:hover {
+  color: rgb(238, 81, 199);
+}
+
+.google:hover {
+  color: rgb(238, 81, 199);
+}
+
+.hover {
+  color: rgb(238, 81, 199);
+  text-decoration: underline;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #222;
+  position: relative;
+}
+
+.numberc {
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  z-index: 10;
+  position: absolute;
+  padding-bottom: 15px;
+}
+
+.textc {
+  position: absolute;
+  top: 105px;
+  text-align: center;
+  color: white;
+  z-index: 10000090900;
+}
+
+/* Inner border effect */
+.percentage .circle::before {
+  content: "";
+  position: absolute;
+  inset: 90px; /* Adds spacing inside the outer circle */
+  border-radius: 50%;
+  background: #333;
+  z-index: 0;
+}
+
+.percentage .circle::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 20px solid #4d4c51;
+  box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.9), 0 5px 15px rgba(0, 0, 0, 0.9),
+    0 -2px 2px rgba(255, 255, 255, 0.965), inset 0 4px 2px rgba(0, 0, 0, 0.9),
+    inset 0 -2px 2px rgba(255, 255, 255, 0.965);
+  background: #333;
+  z-index: 1;
+}
+
+.card {
+  padding-left: 100px;
+  width: 100%;
+}
+
+.cards {
+  width: 350px;
+  margin-left: 150px;
+  margin-top: 30px;
+  background-color: #000000;
+  border-radius: 10px;
+  padding: 15px;
+  position: absolute;
+}
+
+.cards:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.titlec {
+  justify-content: center;
+  font-size: 25px;
+  padding-bottom: 20px;
+}
+
+.cscenario {
+  justify-content: center;
+}
+
+.percentage {
+  justify-content: center;
+}
+
+.win {
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+.lose {
+  padding-left: 160px;
+  align-items: end;
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+.button {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(238, 81, 199);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 100px;
+}
+
+.button:hover {
+  transform: scale(1.15);
+  transition: transform 0.3s ease;
+}
+
+.cards {
+  width: 400px;
+  margin-left: 150px;
+  margin-top: 30px;
+  background-color: #252525;
+  border-radius: 10px;
+  padding: 15px;
+  --color: rgb(238, 81, 199); /* Border color */
+  overflow: hidden;
+  position: relative;
+}
+
+.cards:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.titlec {
+  justify-content: center;
+  font-size: 25px;
+  padding-bottom: 20px;
+}
+
+.cscenario {
+  justify-content: center;
+}
+
+.percentage {
+  justify-content: center;
+}
+
+.win {
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+.lose {
+  padding-left: 160px;
+  align-items: end;
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+.button {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(238, 81, 199);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 100px;
+}
+
+.button:hover {
+  transform: scale(1.15);
+  transition: transform 0.3s ease;
+}
+
+.button1 {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(144, 238, 144);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 100px;
+}
+.button1:hover {
+  transform: scale(1.15);
+  transition: transform 0.3s ease;
+}
+
+.button2 {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(173, 216, 230);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 100px;
+}
+.button2:hover {
+  transform: scale(1.15);
+  transition: transform 0.3s ease;
+}
+
+.cards {
+  position: relative;
+  width: 400px;
+  margin-left: 150px;
+  margin-top: 30px;
+  background-color: #000000; /*border color adjust*/
+  border-radius: 10px;
+  padding: 15px;
+  overflow: hidden;
+  z-index: 99;
+}
+
+.cards::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+
+  background: conic-gradient(from 0deg, #d111d1, #f48fb1, #d111d1);
+
+  border-radius: 13px;
+  z-index: -1;
+
+  animation: spin 6s linear infinite;
+}
+
+.cards::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+
+  background: #000000;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.titlec,
+.cscenario,
+.goal,
+.rank,
+.percentage,
+.button,
+.button1,
+.button2 {
+  z-index: 10;
+}
+
+.cards:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: conic-gradient(
+    from 0deg,
+    rgb(67, 193, 67),
+    rgb(144, 238, 144),
+    rgb(24, 232, 24)
+  );
+  border-radius: 13px;
+  z-index: -1;
+  animation: spin 6s linear infinite;
+}
+
+.cards:nth-child(3)::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: conic-gradient(
+    from 0deg,
+    rgb(8, 179, 236),
+    rgb(28, 146, 185),
+    rgb(7, 176, 232)
+  );
+  border-radius: 13px;
+  z-index: -1;
+  animation: spin 6s linear infinite;
+}
