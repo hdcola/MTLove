@@ -21,7 +21,7 @@
         <div class="icons flex flex-row">
           <ul class="nav-links flex flex-row gap-20">
             <a href="beginningpage/index.html" id="hi" class="hovers">Home</a>
-            <a href="scenario.html" id="hi" class="hovers">Scenario</a>
+            <a href="scenario.html" id="hi" class="hover">Scenario</a>
             <a href="about.html" id="hi" class="hovers">About</a>
 
             <a href="language.html" id="hi" class="hovers">Language</a>
@@ -36,8 +36,117 @@
           </ul>
         </div>
       </div>
+      <div class="card flex flex-row">
+        <div class="cards flex flex-col">
+          <div class="titlec flex">Convincing a Friend</div>
+          <div class="cscenario">
+            Scenario: Your friend, Josh is unsure about joining the school's
+            baseball team. But you really want him to join the team for some
+            reason.
+          </div>
+          <div class="goal">
+            Goal: Persuade them to join by emphasizing teamwork, fun, and the
+            opportunity to improve their skills.
+          </div>
+          <div class="rank flex flex-row">
+            <div class="win">Won : 89</div>
+            <div class="lose">Lose : 12</div>
+          </div>
+          <div class="percentage flex">
+            <div class="circle" data-degree="88" data-color="rgb(238, 81, 199)">
+              <div class="numberc">88%</div>
+              <div class="textc">Passed</div>
+            </div>
+          </div>
+          <div class="button">
+            <a href="#"> Game start</a>
+          </div>
+        </div>
+
+        <div class="cards flex flex-col">
+          <div class="titlec flex">Family vs Partner</div>
+          <div class="cscenario">
+            Scenario: Your girlfriend and mom are both in danger, and you can
+            only save one. Who would you prioritize? You bloody mother, or
+            lovely girlfriend.
+          </div>
+          <div class="goal">
+            Goal: Persuade to the person you would rather not save.
+          </div>
+          <div class="rank flex flex-row">
+            <div class="win">Won : 19</div>
+            <div class="lose">Lose : 503</div>
+          </div>
+          <div class="percentage flex">
+            <div class="circle" data-degree="4" data-color="rgb(144, 238, 144)">
+              <div class="numberc">4%</div>
+              <div class="textc">Passed</div>
+            </div>
+          </div>
+          <div class="button1">
+            <a href="#"> Game start</a>
+          </div>
+        </div>
+
+        <div class="cards flex flex-col">
+          <div class="titlec flex">The Talking Plant</div>
+          <div class="cscenario">
+            Scenario: You’re taking care of a plant, and suddenly, it starts
+            talking. It wants you to help it find its missing leaf. The plant
+            thinks it’s a detective and insists that the leaf is "on the run"
+            and might be in the "witness protection program."
+          </div>
+          <div class="goal">
+            Goal: Help the plant find its missing leaf before it calls for
+            backup.
+          </div>
+          <div class="rank flex flex-row">
+            <div class="win">Won : 90</div>
+            <div class="lose">Lose : 78</div>
+          </div>
+          <div class="percentage flex">
+            <div
+              class="circle"
+              data-degree="54"
+              data-color="rgb(173, 216, 230)"
+            >
+              <div class="numberc">54</div>
+              <div class="textc">Passed</div>
+            </div>
+          </div>
+          <div class="button2">
+            <a href="#"> Game start</a>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script src="app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+        let circles = document.querySelectorAll(".circle"); // Select all circles
+        circles.forEach(function (progress) {
+          let degree = 0;
+          let targetDegree = parseInt(progress.getAttribute("data-degree")); // Get the target degree
+          let color = progress.getAttribute("data-color"); // Get the color
+          let number = progress.querySelector(".numberc"); // Select the number element inside the circle
+
+          let interval = setInterval(function () {
+            degree += 1; // Increment the degree
+
+            // Update the text inside the circle
+            number.textContent = `${degree}%`;
+
+            // Apply the conic-gradient to the circle
+            progress.style.background = `conic-gradient(${color} ${degree}%, #222 0%)`;
+
+            // If the degree reaches the target degree, stop the animation
+            if (degree >= targetDegree) {
+              clearInterval(interval); // Stop the interval
+              return;
+            }
+          }, 20); // Update every 20ms
+        });
+      });
+    </script>
   </body>
 </html>
