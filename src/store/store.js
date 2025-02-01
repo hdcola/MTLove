@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-const api = "AIzaSyCYndM-qZeZFdzcon4sTMY6k5UdLZXGKdE";
+const api = "";
 
 export const useStore = create(
   persist(
