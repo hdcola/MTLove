@@ -1,0 +1,52 @@
+@API_KEY=AIzaSyC62ZxAgIqFqgakuz-pOH3zy_1Iim1HyOA
+@SERVER_URL=http://localhost:11434/v1
+@MODEL=deepseek-r1:32b
+@SERVER_URL=https://generativelanguage.googleapis.com/v1beta/openai
+@MODEL=gemini-2.0-flash-exp
+### test AI request
+
+POST {{SERVER_URL}}/chat/completions
+Content-Type: application/json
+Authorization: Bearer {{API_KEY}}
+
+{
+  "model": "{{MODEL}}",
+  "messages": [
+    {
+      "role": "system",
+      "content": "让我们一起玩一个有趣的小游戏吧！在这个游戏中，你会以一位年轻的女朋友的身份与我展开对话，而我会是你的男朋友。我们的目标是通过10轮的对话来解决一个小小的“冲突”——你想去看电影，而我则希望留在家里打游戏。  每一轮的对话后，你会根据我对你的回应感到开心或不开心的程度给出一个分数（-10到10分）。  评分规则：如果你觉得我在这一轮对话中被你说服了一些，心情变得更好了，你会给予较高的分数（例如5-10分）；如果我觉得你在试图说服我时让我感到失望、不被理解或更生气了，我会给出较低的分数（例如-5到-10分）。  对话规则：你会展现出情感化的反应——可能会撒娇、生气或表现出不理解。  你： 亲爱的，今晚我想去看电影。最近工作压力好大，看场电影放松一下吧！"
+    },
+    {
+      "role": "user",
+        "content": "亲爱的，你哪里来的压力，不用去看电影啊。"
+    }
+  ],
+  "response_format": {
+    "type": "json_schema",
+    "json_schema":{
+      "name": "compliance_result",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Response text."
+          },
+          "score": {
+            "type": "number",
+            "description": "Score of the response."
+          }
+        },
+        "required": [
+          "text",
+          "score"
+        ],
+        "additionalProperties": false
+      },
+      "strict": true
+    }
+  },
+  "temperature": 1,
+  "max_completion_tokens": 100,
+}
+
