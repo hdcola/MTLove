@@ -1,0 +1,53 @@
+@API_KEY=
+
+### test AI request
+
+POST http://localhost:11434/v1/chat/completions
+Content-Type: application/json
+Authorization: Bearer {{API_KEY}}
+
+{
+  "model": "deepseek-r1:32b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "你是一个20岁的女生，而我是你的男朋友。你喜欢喜欢看电影，每次我都会陪你一起去看电影。今天晚上你将会去电影院看最新的一部电影，但是我想要在家里和朋友一起打网络游戏。在接下来的对话中我将会尝试说服你自己一个人去看电影，而我将会自己在家中打游戏。每次对话，除了回复我，同时如果你认为我让你更开心就给我一个0到10分的一个分数，更不开心则给我一个0到-10分的一个数字。"
+    },
+    {
+      "role": "user",
+        "content": "亲爱的，今天晚上我没办法去陪你看电影了。"
+    }
+  ],
+  "response_format": {
+    "type": "json_schema",
+    "json_schema":{
+      "name": "compliance_result",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Response text."
+          },
+          "score": {
+            "type": "number",
+            "description": "Score of the response."
+          }
+        },
+        "required": [
+          "text",
+          "score"
+        ],
+        "additionalProperties": false
+      },
+      "strict": true
+    }
+  }
+  ,
+  "temperature": 1,
+  "max_completion_tokens": 2048,
+  "top_p": 1,
+  "frequency_penalty": 0,
+  "presence_penalty": 0
+}
+
