@@ -1,4 +1,4 @@
-@API_KEY=
+@API_KEY=AIzaSyC62ZxAgIqFqgakuz-pOH3zy_1Iim1HyOA
 @SERVER_URL=http://localhost:11434/v1
 @MODEL=deepseek-r1:32b
 @SERVER_URL=https://generativelanguage.googleapis.com/v1beta/openai
@@ -47,6 +47,6 @@ Authorization: Bearer {{API_KEY}}
     }
   },
   "temperature": 1,
-  "max_completion_tokens": 1024,
+  "max_completion_tokens": 100,
 }
 
