@@ -1,8 +1,8 @@
 @API_KEY=AIzaSyC62ZxAgIqFqgakuz-pOH3zy_1Iim1HyOA
 @SERVER_URL=http://localhost:11434/v1
 @MODEL=deepseek-r1:32b
-@SERVER_URL=https://generativelanguage.googleapis.com/v1beta/openai
-@MODEL=gemini-2.0-flash-exp
+# @SERVER_URL=https://generativelanguage.googleapis.com/v1beta/openai
+# @MODEL=gemini-2.0-flash-exp
 ### test AI request
 
 POST {{SERVER_URL}}/chat/completions
