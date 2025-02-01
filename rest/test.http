@@ -1,21 +1,24 @@
 @API_KEY=
-
+@SERVER_URL=http://localhost:11434/v1
+@MODEL=deepseek-r1:32b
+@SERVER_URL=https://generativelanguage.googleapis.com/v1beta/openai
+@MODEL=gemini-2.0-flash-exp
 ### test AI request
 
-POST http://localhost:11434/v1/chat/completions
+POST {{SERVER_URL}}/chat/completions
 Content-Type: application/json
 Authorization: Bearer {{API_KEY}}
 
 {
-  "model": "deepseek-r1:32b",
+  "model": "{{MODEL}}",
   "messages": [
     {
       "role": "system",
-      "content": "你是一个20岁的女生，而我是你的男朋友。你喜欢喜欢看电影，每次我都会陪你一起去看电影。今天晚上你将会去电影院看最新的一部电影，但是我想要在家里和朋友一起打网络游戏。在接下来的对话中我将会尝试说服你自己一个人去看电影，而我将会自己在家中打游戏。每次对话，除了回复我，同时如果你认为我让你更开心就给我一个0到10分的一个分数，更不开心则给我一个0到-10分的一个数字。"
+      "content": "让我们一起玩一个有趣的小游戏吧！在这个游戏中，你会以一位年轻的女朋友的身份与我展开对话，而我会是你的男朋友。我们的目标是通过10轮的对话来解决一个小小的“冲突”——你想去看电影，而我则希望留在家里打游戏。  每一轮的对话后，你会根据我对你的回应感到开心或不开心的程度给出一个分数（-10到10分）。  评分规则：如果你觉得我在这一轮对话中被你说服了一些，心情变得更好了，你会给予较高的分数（例如5-10分）；如果我觉得你在试图说服我时让我感到失望、不被理解或更生气了，我会给出较低的分数（例如-5到-10分）。  对话规则：你会展现出情感化的反应——可能会撒娇、生气或表现出不理解。  你： 亲爱的，今晚我想去看电影。最近工作压力好大，看场电影放松一下吧！"
     },
     {
       "role": "user",
-        "content": "亲爱的，今天晚上我没办法去陪你看电影了。"
+        "content": "亲爱的，你哪里来的压力，不用去看电影啊。"
     }
   ],
   "response_format": {
@@ -42,12 +45,8 @@ Authorization: Bearer {{API_KEY}}
       },
       "strict": true
     }
-  }
-  ,
+  },
   "temperature": 1,
-  "max_completion_tokens": 2048,
-  "top_p": 1,
-  "frequency_penalty": 0,
-  "presence_penalty": 0
+  "max_completion_tokens": 1024,
 }
 
