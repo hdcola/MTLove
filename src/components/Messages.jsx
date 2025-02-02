@@ -2,6 +2,7 @@ import { useStore } from "../store/store";
 
 export default function Messages() {
   const { messages, scoreHistory } = useStore();
+
   let assistantIndex = -1;
 
   return (
