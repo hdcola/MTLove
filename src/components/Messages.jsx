@@ -1,9 +1,16 @@
 import { useStore } from "../store/store";
+import { useEffect, useRef} from "react";
 
 export default function Messages() {
   const { messages, scoreHistory } = useStore();
+ 
 
   let assistantIndex = -1;
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className="flex-1 overflow-y-auto flex flex-col">
@@ -43,6 +50,7 @@ export default function Messages() {
           </div>
         );
       })}
+      <div ref={messagesEndRef} />
     </div>
   );
 }

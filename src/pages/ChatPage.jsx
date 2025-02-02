@@ -1,14 +1,22 @@
 import { useStore } from "../store/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Messages from "../components/Messages";
+import GameOver from "../components/GameOver";
 
 export default function ChatPage() {
-  const { userInput, setUserInput, sendMessage, score, fetchScenario } =
-    useStore();
+  const {
+    userInput,
+    setUserInput,
+    sendMessage,
+    score,
+    fetchScenario,
+    scoreHistory,
+  } = useStore();
   const params = useParams();
   const currentId = parseInt(params.sid);
-  console.log(currentId);
+
+  const [isWin, setIsWin] = useState(null);
 
   useEffect(() => {
     if (currentId) {
@@ -16,10 +24,34 @@ export default function ChatPage() {
     }
   }, [currentId, fetchScenario]);
 
-  const handleClick = (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (score <= -10 || scoreHistory.length >= 11) {
+      setIsWin(false); // 游戏失败
+    } else if (score > 10) {
+      setIsWin(true); // 游戏胜利
+    }
+  }, [score, scoreHistory]);
+
+  const handleClick = () => {
+    if (userInput.trim() === "") return;
     sendMessage();
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault(); // 阻止默认换行行为
+      handleClick();
+    }
+  };
+
+  if (isWin === false) {
+    return <GameOver score={score} onRestart={onRestart} />;
+  }
+
+  function onRestart() {
+    setIsWin(null);
+    fetchScenario(currentId);
+  }
 
   return (
     <div className="flex-1 flex flex-col items-center h-screen">
@@ -33,6 +65,7 @@ export default function ChatPage() {
           className="border stickey bottom-0 w-96 h-20"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
+          onKeyDown={handleKeyDown}
         ></textarea>
         <button
           onClick={handleClick}
