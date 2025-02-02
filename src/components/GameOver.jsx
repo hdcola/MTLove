@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 
-export default function GameOver({ score, onRestart, onExit }) {
+export default function GameOver({ score, onRestart }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -26,12 +27,12 @@ export default function GameOver({ score, onRestart, onExit }) {
         >
           Restart
         </button>
-        <button
+        <Link
           className="bg-gray-700 hover:bg-gray-500 text-white px-6 py-3 rounded-xl text-lg"
-          onClick={onExit}
+          to="/"
         >
           Exit
-        </button>
+        </Link>
       </div>
     </div>
   );

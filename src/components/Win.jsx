@@ -29,10 +29,12 @@ export default function Win({ score, onRestart }) {
         >
           Play Again
         </button>
-        <Link to="/">
-          <button className="bg-gray-700 hover:bg-gray-500 text-white px-6 py-3 rounded-xl text-lg">
-            Exit
-          </button>
+
+        <Link
+          to="/"
+          className="bg-gray-700 hover:bg-gray-500 text-white px-6 py-3 rounded-xl text-lg"
+        >
+          Exit
         </Link>
       </div>
     </div>

@@ -2,9 +2,6 @@ import { Link } from "react-router";
 import { useEffect, useState } from "react";
 
 export default function ScenarioCard() {
-  const buttonAnimation =
-    "transition-all ease-in-out hover:scale-110 active:scale-100";
-  const cardInnerButton = "bg-slate-400 px-3 rounded text-white select-none";
   const host = "https://mtloveapi.huangdong.workers.dev";
   const [scenarios, setScenarios] = useState([]);
 
