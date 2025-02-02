@@ -68,15 +68,19 @@ export default function ChatPage() {
           <h1 className="text-xl font-bold text-gray-800">
             MTLove Score: <span className="text-blue-600">{score}</span>
           </h1>
-          <button
-            className="btn"
-            onClick={() => document.getElementById("my_modal_2").showModal()}
-          >
-            Challenge Description
-          </button>
-          <Link to="/">
-            <button className="btn btn-neutral">Home</button>
-          </Link>
+
+          <div className="flex justify-end gap-2">
+            <button
+              className="btn"
+              onClick={() => document.getElementById("my_modal_2").showModal()}
+            >
+              Challenge Description
+            </button>
+
+            <Link to="/" className="btn btn-neutral">
+              Home
+            </Link>
+          </div>
         </div>
       </nav>
 
