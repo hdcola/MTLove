@@ -9,6 +9,9 @@ export const useStore = create(
       apiKey: api,
       //   setApiKey: (newKey) => set({ apiKey: newKey }),
 
+      token: '',
+      setToken: (newToken) => set({ token: newToken }),
+
       userInput: '',
       setUserInput: (input) => set({ userInput: input }),
 
