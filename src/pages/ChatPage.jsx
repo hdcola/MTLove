@@ -54,25 +54,35 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex-1 flex flex-col items-center h-screen">
-      <nav className="sticky top-0 m-8 w-full flex justify-center h-10 p-2 z-999">
-        MTLove Score: {score}
+    <div className="flex-1 flex flex-col min-h-screen bg-gray-50">
+      <nav className="sticky top-0 bg-white shadow-sm py-4 px-6 w-full z-50">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <h1 className="text-xl font-bold text-gray-800">
+            MTLove Score: <span className="text-blue-600">{score}</span>
+          </h1>
+        </div>
       </nav>
-      <Messages />
-      <div className="flex p-5 gap-2">
-        <textarea
-          placeholder="type here..."
-          className="border stickey bottom-0 w-96 h-20"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-        ></textarea>
-        <button
-          onClick={handleClick}
-          className="hover:scale-110 hover:bg-gray-200 "
-        >
-          Send
-        </button>
+
+      <div className="flex-1 w-full max-w-4xl mx-auto px-4">
+        <Messages />
+      </div>
+
+      <div className="sticky bottom-0 bg-white border-t border-gray-200 py-4">
+        <div className="max-w-4xl mx-auto px-4 flex gap-3">
+          <textarea
+            placeholder="Type your message here..."
+            className="flex-1 min-h-[80px] p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+          ></textarea>
+          <button
+            onClick={handleClick}
+            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center"
+          >
+            Send
+          </button>
+        </div>
       </div>
     </div>
   );
