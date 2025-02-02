@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/scenario"
+          path="/"
           element={
             <div className="flex flex-col h-screen">
               <Scenario />
@@ -19,14 +19,14 @@ function App() {
           }
         />
         <Route
-          path="/scenario/game"
+          path="/game"
           element={
             <div className="flex flex-col h-screen">
               <ChatPage />
             </div>
           }
         >
-          <Route path="/scenario/game/:sid" element={<Messages />} />
+          <Route path="/game/:sid" element={<Messages />} />
         </Route>
         <Route
           path="/admin"
