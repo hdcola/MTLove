@@ -9,7 +9,7 @@ export async function fetchDb(sid) {
     throw new Error("No data found");
   }
 
-  const { id, title, description, system, start } = data[0];
+  const { id, title, description, system, start } = data;
   console.log(
     `id: ${id} \n title: ${title} \n  description: ${description} \n system: ${system} \n start: ${start}`
   );
