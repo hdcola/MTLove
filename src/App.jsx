@@ -2,6 +2,7 @@ import "./App.css";
 import Messages from "./components/Messages";
 import ChatPage from "./pages/ChatPage";
 import AdminPage from "./pages/admin";
+import ScenarioForm from "./pages/admin/ScenarioForm";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 function App() {
@@ -23,6 +24,14 @@ function App() {
           element={
             <div className="flex flex-col h-screen">
               <AdminPage />
+            </div>
+          }
+        />
+        <Route
+          path="/admin/:id"
+          element={
+            <div className="flex flex-col h-screen">
+              <ScenarioForm />
             </div>
           }
         />

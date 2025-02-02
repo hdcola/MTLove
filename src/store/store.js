@@ -1,9 +1,8 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import { fetchDb } from "./fetch";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import { fetchDb } from './fetch';
 
-// const api = import.meta.process.GEMINI_API_KEY;
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const useStore = create(
   persist(
@@ -17,22 +16,22 @@ export const useStore = create(
             score: 0,
             systemPrompt: scenarioData.system,
             messages: [
-              { role: "system", content: scenarioData.system },
-              { role: "assistant", content: scenarioData.start },
+              { role: 'system', content: scenarioData.system },
+              { role: 'assistant', content: scenarioData.start },
             ],
           });
         } catch (error) {
-          console.error("Failed to fetch scenario:", error);
+          console.error('Failed to fetch scenario:', error);
         }
       },
 
-      userInput: "",
+      userInput: '',
       setUserInput: (input) => set({ userInput: input }),
 
-      token: "",
+      token: '',
       setToken: (newToken) => set({ token: newToken }),
 
-      systemPrompt: "",
+      systemPrompt: '',
       setSystemPrompt: (prompt) => set({ systemPrompt: prompt }),
 
       messages: [],
@@ -60,31 +59,31 @@ export const useStore = create(
         } = get();
         if (!userInput) return;
 
-        addMessage({ role: "user", content: userInput }); // 添加用户对话
-        setUserInput(""); // 清空输入框
+        addMessage({ role: 'user', content: userInput }); // 添加用户对话
+        setUserInput(''); // 清空输入框
 
         // console.log(api);
 
         const requestBody = {
-          model: "gemini-2.0-flash-exp",
-          messages: [...messages, { role: "user", content: userInput }],
+          model: 'gemini-2.0-flash-exp',
+          messages: [...messages, { role: 'user', content: userInput }],
           response_format: {
-            type: "json_schema",
+            type: 'json_schema',
             json_schema: {
-              name: "compliance_result",
+              name: 'compliance_result',
               schema: {
-                type: "object",
+                type: 'object',
                 properties: {
                   text: {
-                    type: "string",
-                    description: "Response text.",
+                    type: 'string',
+                    description: 'Response text.',
                   },
                   score: {
-                    type: "number",
-                    description: "Score of the response.",
+                    type: 'number',
+                    description: 'Score of the response.',
                   },
                 },
-                required: ["text", "score"],
+                required: ['text', 'score'],
                 additionalProperties: false,
               },
               strict: true,
@@ -97,10 +96,10 @@ export const useStore = create(
         const response = await fetch(
           `https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`,
           {
-            method: "POST",
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${apiKey}`,
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${API_KEY}`,
             },
             body: JSON.stringify(requestBody),
           }
@@ -115,9 +114,9 @@ export const useStore = create(
         const curScore = jsonObj.score;
         setScore(curScore);
         setScoreHistory(curScore);
-        addMessage({ role: "assistant", content: jsonObj.text });
+        addMessage({ role: 'assistant', content: jsonObj.text });
       },
     }),
-    { name: "mtlove" }
+    { name: 'mtlove' }
   )
 );
