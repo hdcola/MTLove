@@ -44,3 +44,7 @@ We developed **MTLove** using:
 
 With MTLove, persuasion isn’t about winning—it’s about connecting, understanding, and leading with heart. Will you master the art of persuasion?
 
+## Links
+
+[MTLove Demo](https://mtlove.pages.dev/)
+[MTLove Presentation](https://docs.google.com/presentation/d/1RzAVOvtJObYog7s0MYRXJ5r6hafKN4E5QXXF9S2edu0/edit#slide=id.gcb9a0b074_1_0)
