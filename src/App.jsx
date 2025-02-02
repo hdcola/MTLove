@@ -2,6 +2,7 @@ import "./App.css";
 import Messages from "./components/Messages";
 import ChatPage from "./pages/ChatPage";
 import AdminPage from "./pages/admin";
+import Scenario from "../src/pages/Scenarios";
 import ScenarioForm from "./pages/admin/ScenarioForm";
 import { BrowserRouter, Routes, Route } from "react-router";
 
@@ -10,14 +11,22 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="/scenario"
+          element={
+            <div className="flex flex-col h-screen">
+              <Scenario />
+            </div>
+          }
+        />
+        <Route
+          path="/scenario/game"
           element={
             <div className="flex flex-col h-screen">
               <ChatPage />
             </div>
           }
         >
-          <Route path=":sid" element={<Messages />} />
+          <Route path="/scenario/game/:sid" element={<Messages />} />
         </Route>
         <Route
           path="/admin"

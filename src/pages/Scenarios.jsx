@@ -1,3 +1,5 @@
+import ScenarioCard from "../components/ScenarioCard";
+
 export default function Scenarios() {
   return (
     <section className="flex-1 flex-col flex">
