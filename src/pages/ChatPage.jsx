@@ -1,8 +1,17 @@
 import { useStore } from "../store/store";
+import { useEffect } from "react";
+import { useParams } from "react-router";
 import Messages from "../components/Messages";
 
 export default function ChatPage() {
   const { userInput, setUserInput, sendMessage, score } = useStore();
+
+
+  useEffect(() => {
+    if (scenarioId) {
+      fetchScenario(scenarioId);
+    }
+  }, [scenarioId]);
 
   const handleClick = (e) => {
     e.preventDefault();
