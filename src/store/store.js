@@ -3,6 +3,7 @@ import { persist } from "zustand/middleware";
 import { fetchDb } from "./fetch";
 
 // const api = import.meta.process.GEMINI_API_KEY;
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
 export const useStore = create(
   persist(
@@ -99,7 +100,7 @@ export const useStore = create(
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer `,
+              Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify(requestBody),
           }
