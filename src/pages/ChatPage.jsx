@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Messages from "../components/Messages";
 import GameOver from "../components/GameOver";
+import Win from "../components/Win";
 
 export default function ChatPage() {
   const {
@@ -46,6 +47,10 @@ export default function ChatPage() {
 
   if (isWin === false) {
     return <GameOver score={score} onRestart={onRestart} />;
+  }
+
+  if (isWin === true) {
+    return <Win score={score} onRestart={onRestart} />;
   }
 
   function onRestart() {
