@@ -28,19 +28,20 @@ export default function ScenarioCard() {
       {scenarios.map((item, index) => (
         <div
           key={index}
-          className={`flex flex-col border-2 h-96 rounded-2xl transition-all ease-in-out shadow-lg hover:scale-110`}
+          className="flex flex-col bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
         >
-          <div className="font-bold mx-auto my-3">{item.title}</div>
-          <div className="h-60 m-3">{item.description}</div>
-          <div className="flex mx-auto p-2"></div>
-          <div className="flex mx-auto p-5">
-            <div className="px-2">
-              <Link to={`game/${item.id}`}>
-                <button className={`${cardInnerButton} ${buttonAnimation}`}>
-                  <div className="m-2">To Challenge</div>{" "}
-                </button>
-              </Link>
-            </div>
+          <div className="text-xl font-semibold text-gray-800 text-center px-6 py-5 border-b border-gray-100">
+            {item.title}
+          </div>
+          <div className="flex-1 px-6 py-4 text-gray-600 text-sm leading-relaxed overflow-y-auto">
+            {item.description}
+          </div>
+          <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
+            <Link to={`game/${item.id}`}>
+              <button className="w-full py-2.5 bg-blue-600 text-white rounded-lg font-medium transition-all duration-200 hover:bg-blue-700 active:scale-95 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Start Challenge
+              </button>
+            </Link>
           </div>
         </div>
       ))}
