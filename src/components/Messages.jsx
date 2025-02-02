@@ -13,7 +13,7 @@ export default function Messages() {
   }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-auto flex flex-col">
+    <div className="flex-1 overflow-y-auto flex flex-col pb-4">
       {messages.map((message, index) => {
         if (message.role === "assistant") {
           assistantIndex++; // 只在 assistant 消息时递增
@@ -31,18 +31,26 @@ export default function Messages() {
             }`}
           >
             <div
-              className={`flex items-center chat-bubble w-96 m-2 ${
+              className={`flex items-center chat-bubble min-w-0 max-w-[85vw] sm:max-w-[400px] m-2 
+              break-words whitespace-pre-wrap text-pretty ${
                 message.role === "user"
-                  ? ""
+                  ? "bg-blue-600"
                   : message.role === "system"
                   ? ""
-                  : "chat-bubble chat-bubble-primary"
+                  : "chat-bubble-primary"
               }`}
+              style={{
+                wordBreak: 'break-word',
+                overflowWrap: 'break-word',
+                hyphens: 'auto'
+              }}
             >
-              {message.content}
+              <div className="flex-1 overflow-hidden text-sm sm:text-base">
+                {message.content}
+              </div>
               {message.role === "assistant" &&
                 scoreHistory[assistantIndex] !== undefined && (
-                  <div className="badge badge-xs">
+                  <div className="badge badge-xs ml-2 flex-shrink-0">
                     {scoreHistory[assistantIndex]}
                   </div>
                 )}
@@ -50,7 +58,7 @@ export default function Messages() {
           </div>
         );
       })}
-      <div ref={messagesEndRef} />
+      <div ref={messagesEndRef} className="h-4" />
     </div>
   );
 }
