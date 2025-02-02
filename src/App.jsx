@@ -1,4 +1,5 @@
 import "./App.css";
+import Messages from "./components/Messages";
 import ChatPage from "./pages/ChatPage";
 import AdminPage from "./pages/admin";
 import ScenarioForm from "./pages/admin/ScenarioForm";
@@ -15,7 +16,9 @@ function App() {
               <ChatPage />
             </div>
           }
-        />
+        >
+          <Route path=":sid" element={<Messages />} />
+        </Route>
         <Route
           path="/admin"
           element={

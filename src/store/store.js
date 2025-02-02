@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { fetchDb } from "./fetch";
 
-const api = import.meta.env.VITE_API_KEY;
+// const api = import.meta.process.GEMINI_API_KEY;
 
 export const useStore = create(
   persist(
@@ -12,7 +12,8 @@ export const useStore = create(
         try {
           const scenarioData = await fetchDb(sid);
           set({
-            id: scenarioData.id,
+            scoreHistory: [0],
+            score: 0,
             systemPrompt: scenarioData.system,
             messages: [
               { role: "system", content: scenarioData.system },
@@ -24,26 +25,16 @@ export const useStore = create(
         }
       },
 
-      apiKey: api,
-      //   setApiKey: (newKey) => set({ apiKey: newKey }),
-
-      id: 1,
-      setId: (newId) => set({ id: newId }),
-
       userInput: "",
+      setUserInput: (input) => set({ userInput: input }),
+
       token: "",
       setToken: (newToken) => set({ token: newToken }),
 
       systemPrompt: "",
       setSystemPrompt: (prompt) => set({ systemPrompt: prompt }),
 
-      messages: [
-        {
-          role: "system",
-          content:
-            "Right now, your role is my girlfriend, and we need to play a game, the rules is: I have to convince you to do something that you don't want to do, and you are responding according to my response. You will give an interger score whether it is positive or negative from -10 to 10 for each response.",
-        },
-      ],
+      messages: [],
       addMessage: (newMessage) =>
         set((state) => ({ messages: [...state.messages, newMessage] })),
 
@@ -62,7 +53,6 @@ export const useStore = create(
           userInput,
           addMessage,
           setUserInput,
-          apiKey,
           messages,
           setScore,
           setScoreHistory,
@@ -71,6 +61,8 @@ export const useStore = create(
 
         addMessage({ role: "user", content: userInput }); // 添加用户对话
         setUserInput(""); // 清空输入框
+
+        // console.log(api);
 
         const requestBody = {
           model: "gemini-2.0-flash-exp",
@@ -107,7 +99,7 @@ export const useStore = create(
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${apiKey}`,
+              Authorization: `Bearer `,
             },
             body: JSON.stringify(requestBody),
           }
