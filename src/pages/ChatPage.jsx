@@ -1,6 +1,7 @@
 import { useStore } from "../store/store";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router";
 import Messages from "../components/Messages";
 import GameOver from "../components/GameOver";
 import Win from "../components/Win";
@@ -65,6 +66,9 @@ export default function ChatPage() {
           <h1 className="text-xl font-bold text-gray-800">
             MTLove Score: <span className="text-blue-600">{score}</span>
           </h1>
+          <Link to="/">
+            <button className="btn btn-neutral">Home</button>
+          </Link>
         </div>
       </nav>
 
