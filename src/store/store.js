@@ -31,7 +31,8 @@ export const useStore = create(
       setId: (newId) => set({ id: newId }),
 
       userInput: "",
-      setUserInput: (input) => set({ userInput: input }),
+      token: "",
+      setToken: (newToken) => set({ token: newToken }),
 
       systemPrompt: "",
       setSystemPrompt: (prompt) => set({ systemPrompt: prompt }),
