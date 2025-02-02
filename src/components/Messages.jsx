@@ -31,18 +31,26 @@ export default function Messages() {
             }`}
           >
             <div
-              className={`flex items-center chat-bubble max-w-[80vw] sm:max-w-[400px] m-2 break-words ${
+              className={`flex items-center chat-bubble min-w-0 max-w-[85vw] sm:max-w-[400px] m-2 
+              break-words whitespace-pre-wrap text-pretty ${
                 message.role === "user"
                   ? "bg-blue-600"
                   : message.role === "system"
                   ? ""
                   : "chat-bubble-primary"
               }`}
+              style={{
+                wordBreak: 'break-word',
+                overflowWrap: 'break-word',
+                hyphens: 'auto'
+              }}
             >
-              {message.content}
+              <div className="flex-1 overflow-hidden text-sm sm:text-base">
+                {message.content}
+              </div>
               {message.role === "assistant" &&
                 scoreHistory[assistantIndex] !== undefined && (
-                  <div className="badge badge-xs ml-2">
+                  <div className="badge badge-xs ml-2 flex-shrink-0">
                     {scoreHistory[assistantIndex]}
                   </div>
                 )}
