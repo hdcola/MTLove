@@ -1,7 +1,15 @@
 import { useStore } from "../store/store";
+import { useEffect } from "react";
 
 export default function Messages() {
-  const { messages, scoreHistory } = useStore();
+  const { messages, scoreHistory, fetchScenario } = useStore();
+
+  useEffect(() => {
+    if (scenarioId) {
+      fetchScenario(scenarioId);
+    }
+  }, [scenarioId]);
+
   let assistantIndex = -1;
 
   return (
