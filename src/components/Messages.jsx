@@ -13,7 +13,7 @@ export default function Messages() {
   }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-auto flex flex-col h-[calc(100vh-180px)] sm:h-auto">
+    <div className="flex-1 overflow-y-auto flex flex-col pb-4">
       {messages.map((message, index) => {
         if (message.role === "assistant") {
           assistantIndex++; // 只在 assistant 消息时递增

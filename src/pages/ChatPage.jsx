@@ -72,15 +72,15 @@ export default function ChatPage() {
         </div>
       </nav>
 
-      <div className="flex-1 w-full max-w-4xl mx-auto px-4">
+      <div className="flex-1 w-full max-w-4xl mx-auto px-4 overflow-y-auto">
         <Messages />
       </div>
 
-      <div className="sticky bottom-0 bg-white border-t border-gray-200 py-4">
+      <div className="sticky bottom-0 bg-white border-t border-gray-200 py-4 z-10">
         <div className="max-w-4xl mx-auto px-4 flex gap-3">
           <textarea
             placeholder="Type your message here..."
-            className="flex-1 min-h-[80px] p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="flex-1 min-h-[60px] max-h-[120px] p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             onKeyDown={handleKeyDown}
