@@ -5,20 +5,25 @@ import ChallengeLayout from "./pages/layouts/ChallengeLayout.jsx";
 import Challenge from "./pages/Challenge.jsx";
 import Finished from "./pages/Finished.jsx";
 import CreateNewScenario from "./pages/CreateNewScenario.jsx";
+import Test from "./test.jsx";
 
 export default function Routers() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<MainPageLayout />}>
-          <Route index element={<Scenarios />} />
-          <Route path="create" element={<CreateNewScenario />} />
+        <Route path="mtlove">
+          <Route element={<MainPageLayout />}>
+            <Route index element={<Scenarios />} />
+            <Route path="create" element={<CreateNewScenario />} />
 
-          <Route path="challenge">
-            <Route element={<ChallengeLayout />}>
-              <Route path=":scenarioId" element={<Challenge />} />
-              <Route path=":scenarioId/finished" element={<Finished />} />
+            <Route path="challenge">
+              <Route element={<ChallengeLayout />}>
+                <Route path=":scenarioId" element={<Challenge />} />
+                <Route path=":scenarioId/finished" element={<Finished />} />
+              </Route>
             </Route>
+
+            <Route path="test" element={<Test />} />
           </Route>
         </Route>
       </Routes>

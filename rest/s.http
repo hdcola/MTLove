@@ -1,0 +1,10 @@
+@HOST=https://mtloveapi.huangdong.workers.dev
+@TOKEN=
+
+
+### GET all scenarios
+GET {{HOST}}/api/scenarios HTTP/1.1
+
+
+### GET a scenario
+GET {{HOST}}/api/scenarios/2 HTTP/1.1
