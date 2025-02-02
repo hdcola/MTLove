@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import Messages from "../components/Messages";
 import GameOver from "../components/GameOver";
 import Win from "../components/Win";
+import Description from "../components/Description";
 
 export default function ChatPage() {
   const {
@@ -29,7 +30,7 @@ export default function ChatPage() {
   useEffect(() => {
     if (score <= -10 || scoreHistory.length >= 11) {
       setIsWin(false); // 游戏失败
-    } else if (score > 10) {
+    } else if (score >= 10) {
       setIsWin(true); // 游戏胜利
     }
   }, [score, scoreHistory]);
@@ -61,11 +62,18 @@ export default function ChatPage() {
 
   return (
     <div className="flex-1 flex flex-col min-h-screen bg-gray-50">
+      <Description />
       <nav className="sticky top-0 bg-white shadow-sm py-4 px-6 w-full z-50">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <h1 className="text-xl font-bold text-gray-800">
             MTLove Score: <span className="text-blue-600">{score}</span>
           </h1>
+          <button
+            className="btn"
+            onClick={() => document.getElementById("my_modal_2").showModal()}
+          >
+            Challenge Description
+          </button>
           <Link to="/">
             <button className="btn btn-neutral">Home</button>
           </Link>
