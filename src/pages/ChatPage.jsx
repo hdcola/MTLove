@@ -1,7 +1,6 @@
 import { useStore } from "../store/store";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Link } from "react-router";
+import { useParams, useNavigate, Link } from "react-router";
 import Messages from "../components/Messages";
 import GameOver from "../components/GameOver";
 import Win from "../components/Win";
@@ -15,6 +14,7 @@ export default function ChatPage() {
     score,
     fetchScenario,
     scoreHistory,
+    resetGame,
   } = useStore();
   const params = useParams();
   const currentId = parseInt(params.sid);
@@ -56,35 +56,40 @@ export default function ChatPage() {
   }
 
   function onRestart() {
+    resetGame();
     setIsWin(null);
     fetchScenario(currentId);
   }
 
   return (
-    <div className="flex-1 flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col h-dvh bg-gray-50">
       <Description />
-      <nav className="sticky top-0 bg-white shadow-sm py-4 px-6 w-full z-50">
+      <nav className="bg-white shadow-sm py-4 px-6 w-full z-50">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <h1 className="text-xl font-bold text-gray-800">
             MTLove Score: <span className="text-blue-600">{score}</span>
           </h1>
-          <button
-            className="btn"
-            onClick={() => document.getElementById("my_modal_2").showModal()}
-          >
-            Challenge Description
-          </button>
-          <Link to="/">
-            <button className="btn btn-neutral">Home</button>
-          </Link>
+
+          <div className="flex justify-end gap-2">
+            <button
+              className="btn"
+              onClick={() => document.getElementById("my_modal_2").showModal()}
+            >
+              Challenge Description
+            </button>
+
+            <Link to="/" className="btn btn-neutral" onClick={resetGame}>
+              Home
+            </Link>
+          </div>
         </div>
       </nav>
 
-      <div className="flex-1 w-full max-w-4xl mx-auto px-4 overflow-y-auto">
+      <div className="flex-1 w-full max-w-4xl mx-auto pb-4 overflow-y-auto">
         <Messages />
       </div>
 
-      <div className="sticky bottom-0 bg-white border-t border-gray-200 py-4 z-10">
+      <div className="bg-white border-t border-gray-200 py-4 z-10">
         <div className="max-w-4xl mx-auto px-4 flex gap-3">
           <textarea
             placeholder="Type your message here..."
@@ -104,3 +109,4 @@ export default function ChatPage() {
     </div>
   );
 }
+// pt-28 md:p-0

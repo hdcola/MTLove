@@ -1,9 +1,8 @@
 import { useStore } from "../store/store";
-import { useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 
 export default function Messages() {
   const { messages, scoreHistory } = useStore();
- 
 
   let assistantIndex = -1;
   const messagesEndRef = useRef(null);
@@ -13,7 +12,7 @@ export default function Messages() {
   }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-auto flex flex-col pb-4">
+    <div className="overflow-y-auto flex flex-col pb-4">
       {messages.map((message, index) => {
         if (message.role === "assistant") {
           assistantIndex++; // 只在 assistant 消息时递增
@@ -40,9 +39,9 @@ export default function Messages() {
                   : "chat-bubble-primary"
               }`}
               style={{
-                wordBreak: 'break-word',
-                overflowWrap: 'break-word',
-                hyphens: 'auto'
+                wordBreak: "break-word",
+                overflowWrap: "break-word",
+                hyphens: "auto",
               }}
             >
               <div className="flex-1 overflow-hidden text-sm sm:text-base">
