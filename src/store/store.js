@@ -20,6 +20,7 @@ export const useStore = create(
         try {
           const scenarioData = await fetchDb(sid);
           set({
+            challengeDescription: scenarioData.description,
             scoreHistory: [0],
             score: 0,
             systemPrompt: scenarioData.system,
@@ -32,6 +33,8 @@ export const useStore = create(
           console.error("Failed to fetch scenario:", error);
         }
       },
+
+      challengeDescription: "",
 
       userInput: "",
       setUserInput: (input) => set({ userInput: input }),
