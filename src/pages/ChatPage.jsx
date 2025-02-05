@@ -1,6 +1,6 @@
 import { useStore } from "../store/store";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router";
+import { useParams, Link } from "react-router";
 import Messages from "../components/Messages";
 import GameOver from "../components/GameOver";
 import Win from "../components/Win";
