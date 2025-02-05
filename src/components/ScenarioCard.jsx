@@ -25,7 +25,7 @@ export default function ScenarioCard() {
       {scenarios.map((item, index) => (
         <div
           key={index}
-          className="flex flex-col bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out hover:scale-105"
+          className="flex flex-col bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:z-0"
         >
           <div className="text-xl font-semibold text-gray-800 text-center px-6 py-5 border-b border-gray-100">
             {item.title}
