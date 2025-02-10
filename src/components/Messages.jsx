@@ -1,8 +1,11 @@
-import { useStore } from "../store/store";
+/* eslint-disable react/prop-types */
+// import { useMessages } from "../hooks/useMessages";
+// import { useStore } from "../store/store";
+
 import { useEffect, useRef } from "react";
 
-export default function Messages() {
-  const { messages, scoreHistory } = useStore();
+export default function Messages({ messages, scoreHistory }) {
+  // const { messages, scoreHistory } = useStore();
 
   let assistantIndex = -1;
   const messagesEndRef = useRef(null);

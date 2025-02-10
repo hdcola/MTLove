@@ -1,31 +1,106 @@
-import { useStore } from "../store/store";
+// import { useStore } from "../store/store";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
 import Messages from "../components/Messages";
 import GameOver from "../components/GameOver";
 import Win from "../components/Win";
 import Description from "../components/Description";
+import { fetchDb } from "../store/fetch";
 
 export default function ChatPage() {
-  const {
-    userInput,
-    setUserInput,
-    sendMessage,
-    score,
-    fetchScenario,
-    scoreHistory,
-    resetGame,
-  } = useStore();
+  // const {
+  //   userInput,
+  //   setUserInput,
+  //   sendMessage,
+  //   score,
+  //   fetchScenario,
+  //   scoreHistory,
+  //   resetGame,
+  // } = useStore();
+
+  const [messages, setMessages] = useState([]);
+  const [userInput, setUserInput] = useState("");
+  const [score, setScore] = useState(0);
+  const [scoreHistory, setScoreHistory] = useState([0]);
+  const [systemPrompt, setSystemPrompt] = useState("");
+
   const params = useParams();
   const currentId = parseInt(params.sid);
-
   const [isWin, setIsWin] = useState(null);
 
   useEffect(() => {
-    if (currentId) {
-      fetchScenario(currentId);
-    }
-  }, [currentId, fetchScenario]);
+    const fetchScenarioData = async () => {
+      const scenarioData = await fetchDb(currentId);
+      setSystemPrompt(scenarioData.system);
+      setMessages([
+        {
+          role: "system",
+          content: systemPrompt + " DO NOT INCLUDE THE SCORE IN THE TEXT",
+        },
+        { role: "assistant", content: scenarioData.start },
+      ]);
+    };
+    fetchScenarioData();
+  }, [currentId, systemPrompt]);
+
+  const sendMessage = async () => {
+    const API_KEY = import.meta.env.VITE_API_KEY;
+    if (!userInput.trim()) return; // 如果输入为空则返回
+    const newMessage = { role: "user", content: userInput }; // 添加用户新消息
+    setUserInput(""); // 清空用户输入
+    setMessages([...messages, newMessage]); // 添加用户新消息到messages
+    console.log(messages);
+
+    const requestBody = {
+      model: "gemini-2.0-flash-exp",
+      messages: [...messages, newMessage],
+      response_format: {
+        type: "json_schema",
+        json_schema: {
+          name: "compliance_result",
+          schema: {
+            type: "object",
+            properties: {
+              text: {
+                type: "string",
+                description: "Response text.",
+              },
+              score: {
+                type: "number",
+                description: "Score of the response.",
+              },
+            },
+            required: ["text", "score"],
+            additionalProperties: false,
+          },
+          strict: true,
+        },
+      },
+    };
+
+    const response = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${API_KEY}`,
+        },
+        body: JSON.stringify(requestBody),
+      }
+    );
+    const data = await response.json();
+    const aiResponse = data.choices[0].message.content;
+    const jsonObj = JSON.parse(aiResponse);
+    const curScore = jsonObj.score;
+    setScore(score + curScore);
+    setScoreHistory([...scoreHistory, curScore]);
+    setMessages([
+      ...messages,
+      newMessage, // 添加用户新消息
+      { role: "assistant", content: jsonObj.text },
+    ]); // 添加助手新消息
+  };
 
   useEffect(() => {
     if (score <= -10 || scoreHistory.length >= 11) {
@@ -47,18 +122,21 @@ export default function ChatPage() {
     }
   };
 
+  // Game logic
   if (isWin === false) {
     return <GameOver score={score} onRestart={onRestart} />;
   }
-
   if (isWin === true) {
     return <Win score={score} onRestart={onRestart} />;
   }
 
+  /**
+   * 重新开始游戏
+   */
   function onRestart() {
-    resetGame();
+    setScore(0);
+    setScoreHistory([0]);
     setIsWin(null);
-    fetchScenario(currentId);
   }
 
   return (
@@ -78,7 +156,7 @@ export default function ChatPage() {
               Challenge Description
             </button>
 
-            <Link to="/" className="btn btn-neutral" onClick={resetGame}>
+            <Link to="/" className="btn btn-neutral">
               Home
             </Link>
           </div>
@@ -86,7 +164,7 @@ export default function ChatPage() {
       </nav>
 
       <div className="flex-1 w-full max-w-4xl mx-auto pb-4 overflow-y-auto">
-        <Messages />
+        <Messages messages={messages} scoreHistory={scoreHistory} />
       </div>
 
       <div className="bg-white border-t border-gray-200 py-4 z-10">
