@@ -23,6 +23,7 @@ export default function ChatPage() {
   const [score, setScore] = useState(0);
   const [scoreHistory, setScoreHistory] = useState([0]);
   const [systemPrompt, setSystemPrompt] = useState("");
+  const [challengeDescription, setChallengeDescription] = useState("");
 
   const params = useParams();
   const currentId = parseInt(params.sid);
@@ -39,6 +40,7 @@ export default function ChatPage() {
         },
         { role: "assistant", content: scenarioData.start },
       ]);
+      setChallengeDescription(scenarioData.description);
     };
     fetchScenarioData();
   }, [currentId, systemPrompt]);
@@ -141,7 +143,7 @@ export default function ChatPage() {
 
   return (
     <div className="flex flex-col h-dvh bg-gray-50">
-      <Description />
+      <Description challengeDescription={challengeDescription} />
       <nav className="bg-white shadow-sm py-4 px-6 w-full z-50">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <h1 className="text-xl font-bold text-gray-800">
