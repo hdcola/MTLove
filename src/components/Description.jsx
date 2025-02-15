@@ -1,8 +1,10 @@
-import { useStore } from "../store/store";
+/* eslint-disable react/prop-types */
+// import { useStore } from "../store/store";
 
-export default function Description() {
-  const { challengeDescription } = useStore();
-  console.log(challengeDescription);
+export default function Description({ challengeDescription }) {
+  // const { challengeDescription } = useStore();
+
+  // console.log(challengeDescription);
   return (
     <dialog id="my_modal_2" className="modal">
       <div className="modal-box">
