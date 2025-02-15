@@ -1,6 +1,6 @@
 -put "chanllenge description" into dropdown menu
--add more interactive reaction to user, such as thumbs,emojis
--scroe for each round goes into a heart-shaped icon
--add round counts next to total score
+-scroe for each round goes with face icon
+-add round counts next to total score, goes to right dowm corner
 
-[wirefram_chetbox-layout](https://wireframe.cc/jJMFSw)
+[wirefram_chatbox-layout_cell](https://wireframe.cc/jJMFSw)
+[wireframe_chatbox_layout_web](https://wireframe.cc/UKQfPj)
