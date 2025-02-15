@@ -1,5 +1,6 @@
 import ScenarioCard from "../components/ScenarioCard";
 import "../index.css";
+import "./Scenarios.css"; // Import the CSS file
 
 export default function Scenarios() {
   return (
@@ -8,31 +9,11 @@ export default function Scenarios() {
         <h1 className="text-5xl font-bold text-white mb-4">MTLove</h1>
         <div className="w-24 h-1 bg-purple-600 mx-auto rounded-full"></div>
       </div>
-      <div className="px-4 py-52 sm:px-6 lg:px-8 h-dvh w-dvw overflow-y-auto">
+      <div className="px-4 py-36 sm:px-6 lg:px-8 h-dvh w-dvw overflow-y-auto">
         <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
           <ScenarioCard />
         </div>
       </div>
-
-
-      <style jsx>{`
-        @keyframes gradientAnimation {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradientAnimation 10s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 }
