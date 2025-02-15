@@ -25,22 +25,25 @@ export default function ScenarioCard() {
       {scenarios.map((item, index) => (
         <div
           key={index}
-          className="flex flex-col bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out hover:scale-105 hover:z-0"
+          className="flex flex-col bg-orange-50 border border-gray-300 rounded-2xl shadow-[20px_20px_10px_rgba(0,0,0,0.5)] hover:  transition-transform duration-300 ease-out hover:scale-110 font-semibold "
         >
-          <div className="text-xl font-semibold text-gray-800 text-center px-6 py-5 border-b border-gray-100">
+          <div className="text-2xl font-bold text-gray-900 text-center px-6 py-6 border-b border-gray-200">
             {item.title}
           </div>
-          <div className="flex-1 px-6 py-4 text-gray-600 text-sm leading-relaxed overflow-y-auto">
+
+          <div className="flex-1 px-6 py-5 text-gray-700 text-base leading-relaxed overflow-y-auto ">
             {item.description}
           </div>
-          <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
+
+          <div className="px-6 py-5 bg-orange-50  flex justify-center rounded-2xl">
             <Link to={`game/${item.id}`}>
-              <button className="w-full py-2.5 bg-blue-600 text-white rounded-lg font-medium transition-all duration-200 hover:bg-blue-700 active:scale-95 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+              <button className="p-5 w-full py-3 bg-blue-400 text-white text-lg rounded-2xl font-semibold transition-all duration-200 hover:bg-blue-500 active:scale-90 focus:ring-4 focus:ring-blue-400 ">
                 Start Challenge
               </button>
             </Link>
           </div>
         </div>
+
       ))}
     </>
   );
