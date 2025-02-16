@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { useStore } from "../store/store";
 
-export default function GameOver({ score, onRestart }) {
+export default function GameOver({ score, onRestart, messages }) {
   const [visible, setVisible] = useState(false);
-  const { messages, resetGame } = useStore();
+  const { resetGame } = useStore();
 
   console.log(messages);
 

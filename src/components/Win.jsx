@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { useStore } from "../store/store";
 
-export default function Win({ score, onRestart }) {
+export default function Win({ score, onRestart, messages }) {
   const [visible, setVisible] = useState(false);
-  const { messages, resetGame } = useStore();
+  const { resetGame } = useStore();
 
   useEffect(() => {
     setTimeout(() => setVisible(true), 500);

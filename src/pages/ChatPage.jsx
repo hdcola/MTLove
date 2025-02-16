@@ -126,19 +126,17 @@ export default function ChatPage() {
 
   // Game logic
   if (isWin === false) {
-    return <GameOver score={score} onRestart={onRestart} />;
+    return <GameOver score={score} onRestart={onRestart} messages={messages} />;
   }
   if (isWin === true) {
-    return <Win score={score} onRestart={onRestart} />;
+    return <Win score={score} onRestart={onRestart} messages={messages} />;
   }
 
   /**
    * 重新开始游戏
    */
   function onRestart() {
-    setScore(0);
-    setScoreHistory([0]);
-    setIsWin(null);
+    window.location.reload();
   }
 
   return (

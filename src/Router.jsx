@@ -4,11 +4,14 @@ import ChatPage from "./pages/ChatPage";
 // import Messages from "./components/Messages";
 import AdminPage from "./pages/admin";
 import ScenarioForm from "./pages/admin/ScenarioForm";
+import LoginPage from "./pages/login";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path='/login' element={<LoginPage />} />
+
         <Route path="/" element={<Scenarios />} />
         <Route path="/game">
           <Route path="/game/:sid" element={<ChatPage />} />
