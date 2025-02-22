@@ -203,7 +203,6 @@ The MTLove API is a RESTful API that allows you to interact with Generative arti
 - `title`: Required. Type: `string` Length: 5-40 characters. A conclusive description of the scenario.
 - `description`: Required. Type: `string` Length: 20-1000 characters. The declarative content of the scenario.
 - `system`: Requires. Type: `string` Length: 20-1000 characters. It describes the AI's role and perspective in the conversation. It has to icludes the folowing elements:
-
   - Role - who the AI is in the scenario
   - Personality - How the AI should behave and react
   - Context - Background imformation relevant to the scenaio
