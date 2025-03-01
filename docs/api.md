@@ -30,10 +30,17 @@
       - [New scenario Success Response](#new-scenario-success-response)
       - [New scenario Success Response Field Description](#new-scenario-success-response-field-description)
   - [Challenge](#challenge)
-    - [Current Challenge](#current-challenge)
-      - [Current Challenge Endpoint](#current-challenge-endpoint)
-      - [Current Challenge Endpoint Response](#current-challenge-endpoint-response)
-      - [Current Challenge Endpoint Response Field Description](#current-challenge-endpoint-response-field-description)
+    - [Get Current Challenge](#get-current-challenge)
+      - [Get Current Challenge Endpoint](#get-current-challenge-endpoint)
+      - [Get Current Challenge Endpoint Response](#get-current-challenge-endpoint-response)
+      - [Get Current Challenge Endpoint Response Field Description](#get-current-challenge-endpoint-response-field-description)
+    - [Play Current Challenge](#play-current-challenge)
+      - [Play Current Challenge Endpoint](#play-current-challenge-endpoint)
+      - [Play Current Challenge Endpoint Resquest Headers](#play-current-challenge-endpoint-resquest-headers)
+      - [Play Current Challenge Endpoint Resquest Body](#play-current-challenge-endpoint-resquest-body)
+      - [Play Current Challenge Endpoint Resquest Body Field Description](#play-current-challenge-endpoint-resquest-body-field-description)
+      - [Play Current Challenge Endpoint Response](#play-current-challenge-endpoint-response)
+      - [Play Current Challenge Endpoint Response Field Description](#play-current-challenge-endpoint-response-field-description)
 
 ---
 
@@ -178,8 +185,8 @@ The MTLove API is a RESTful API that allows you to interact with Generative arti
   "createdAt": "2025-02-15T21:08:00.000",
   "author": {
       "id": "678c5sca54sac52qf1000",
-      "username": "test",
-      "email": "test@gmail.com",
+      "username": "John Doe",
+      "email": "John_doe@gmail.com",
     },
 ]
 ```
@@ -191,6 +198,11 @@ The MTLove API is a RESTful API that allows you to interact with Generative arti
 - `description`: Scenario description
 - `totalWin`: Total win of current scenarios from all users
 - `totalLost`: Total lost of current scenarios from all users
+- `createdAt`: Time Stamp of the creation
+- `author`: Object contains author's information
+  - `id`: A unique identifier of the author
+  - `username`: The name of the author
+  - `email`: The email of the author
 
 ---
 
@@ -271,15 +283,15 @@ The MTLove API is a RESTful API that allows you to interact with Generative arti
 
 ---
 
-### Current Challenge
+### Get Current Challenge
 
 - Get a designated scenario from the serve
 
-#### Current Challenge Endpoint
+#### Get Current Challenge Endpoint
 
 - `GET /api/scenarios/sid`
 
-#### Current Challenge Endpoint Response
+#### Get Current Challenge Endpoint Response
 
 ```json
 {
@@ -291,10 +303,60 @@ The MTLove API is a RESTful API that allows you to interact with Generative arti
 }
 ```
 
-#### Current Challenge Endpoint Response Field Description
+#### Get Current Challenge Endpoint Response Field Description
 
 - `sid`: A unique identifier for current scenario
 - `title`: A descriptive name of current scenario
 - `description`: The declarative content of the scenario
 - `system`: A descriptive content of AI's role and perspective in the conversation.
 - `start`: The first conversation started by AI and defined by user
+
+### Play Current Challenge
+
+- GamePlay
+
+#### Play Current Challenge Endpoint
+
+- `POST /api/scenarios/sid`
+
+#### Play Current Challenge Endpoint Resquest Headers
+
+- `Content-Type: application/json`
+
+#### Play Current Challenge Endpoint Resquest Body
+
+```json
+{
+  "message": "I want to hang out with my friends",
+  "previousMessages": [
+    {
+      "role": "ai",
+      "content": "I've got two tickets to a movie tonight that I've been waiting two months for. Let's go now."
+    }
+  ]
+}
+```
+
+#### Play Current Challenge Endpoint Resquest Body Field Description
+
+- `message`: User's input
+- `previousMessages`: **Optional**, Messages history, this make sure that AI understand the content
+  - `role`: The role of current message
+  - `content`: The content of current role
+
+#### Play Current Challenge Endpoint Response
+
+```json
+{
+  "aiResponse": "But we planned this weeks ago. It's really important to me.",
+  "score": -5,
+  "challengeStatus": "ongoing",
+}
+```
+
+#### Play Current Challenge Endpoint Response Field Description
+
+- `aiResponse`: AI's response
+- `score`: The score of each message
+- `challengeStatus`: `ongoing`, `win`, `lose`
+
