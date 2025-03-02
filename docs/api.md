@@ -22,6 +22,10 @@
       - [Scenario List Endpoint](#scenario-list-endpoint)
       - [Scenario List Success Response](#scenario-list-success-response)
       - [Scenario List Success Response Field Description](#scenario-list-success-response-field-description)
+    - [Get a Scenario](#get-a-scenario)
+      - [Get a Scenario Endpoint](#get-a-scenario-endpoint)
+      - [Get a Scenario Endpoint Response](#get-a-scenario-endpoint-response)
+      - [Get a Scenario Endpoint Response Field Description](#get-a-scenario-endpoint-response-field-description)
     - [Create a new Scenario](#create-a-new-scenario)
       - [New scenario Endpoint](#new-scenario-endpoint)
       - [New scenario Request Headers](#new-scenario-request-headers)
@@ -30,17 +34,13 @@
       - [New scenario Success Response](#new-scenario-success-response)
       - [New scenario Success Response Field Description](#new-scenario-success-response-field-description)
   - [Challenge](#challenge)
-    - [Get Current Challenge](#get-current-challenge)
-      - [Get Current Challenge Endpoint](#get-current-challenge-endpoint)
-      - [Get Current Challenge Endpoint Response](#get-current-challenge-endpoint-response)
-      - [Get Current Challenge Endpoint Response Field Description](#get-current-challenge-endpoint-response-field-description)
-    - [Play Current Challenge](#play-current-challenge)
-      - [Play Current Challenge Endpoint](#play-current-challenge-endpoint)
-      - [Play Current Challenge Endpoint Resquest Headers](#play-current-challenge-endpoint-resquest-headers)
-      - [Play Current Challenge Endpoint Resquest Body](#play-current-challenge-endpoint-resquest-body)
-      - [Play Current Challenge Endpoint Resquest Body Field Description](#play-current-challenge-endpoint-resquest-body-field-description)
-      - [Play Current Challenge Endpoint Response](#play-current-challenge-endpoint-response)
-      - [Play Current Challenge Endpoint Response Field Description](#play-current-challenge-endpoint-response-field-description)
+    - [Create a Challenge](#create-a-challenge)
+      - [Create a Challenge Endpoint](#create-a-challenge-endpoint)
+      - [Create a Challenge Endpoint Resquest Headers](#create-a-challenge-endpoint-resquest-headers)
+      - [Create a Challenge Endpoint Resquest Body](#create-a-challenge-endpoint-resquest-body)
+      - [Create a Challenge Endpoint Resquest Body Field Description](#create-a-challenge-endpoint-resquest-body-field-description)
+      - [Create a Challenge Endpoint Response](#create-a-challenge-endpoint-response)
+      - [Create a Challenge Endpoint Response Field Description](#create-a-challenge-endpoint-response-field-description)
 
 ---
 
@@ -204,7 +204,33 @@ The MTLove API is a RESTful API that allows you to interact with Generative arti
   - `username`: The name of the author
   - `email`: The email of the author
 
----
+### Get a Scenario
+
+- Get a designated scenario from the serve
+
+#### Get a Scenario Endpoint
+
+- `GET /api/scenarios/{sid}`
+
+#### Get a Scenario Endpoint Response
+
+```json
+{
+  "sid": "67hbk42nk2j21hjkh24k",
+  "title": "Scenario 1",
+  "description": "This is the description of the scenario",
+  "system": "You are my girlfriend",
+  "start": "I've got two tickets to a movie tonight that I've been waiting two months for. Let's go now."
+}
+```
+
+#### Get a Scenario Endpoint Response Field Description
+
+- `sid`: A unique identifier for current scenario
+- `title`: A descriptive name of current scenario
+- `description`: The declarative content of the scenario
+- `system`: A descriptive content of AI's role and perspective in the conversation.
+- `start`: The first conversation started by AI and defined by user
 
 ### Create a new Scenario
 
@@ -283,47 +309,19 @@ The MTLove API is a RESTful API that allows you to interact with Generative arti
 
 ---
 
-### Get Current Challenge
-
-- Get a designated scenario from the serve
-
-#### Get Current Challenge Endpoint
-
-- `GET /api/scenarios/sid`
-
-#### Get Current Challenge Endpoint Response
-
-```json
-{
-  "sid": "67hbk42nk2j21hjkh24k",
-  "title": "Scenario 1",
-  "description": "This is the description of the scenario",
-  "system": "You are my girlfriend",
-  "start": "I've got two tickets to a movie tonight that I've been waiting two months for. Let's go now."
-}
-```
-
-#### Get Current Challenge Endpoint Response Field Description
-
-- `sid`: A unique identifier for current scenario
-- `title`: A descriptive name of current scenario
-- `description`: The declarative content of the scenario
-- `system`: A descriptive content of AI's role and perspective in the conversation.
-- `start`: The first conversation started by AI and defined by user
-
-### Play Current Challenge
+### Create a Challenge
 
 - GamePlay
 
-#### Play Current Challenge Endpoint
+#### Create a Challenge Endpoint
 
-- `POST /api/scenarios/sid`
+- `POST /api/scenarios/{sid}`
 
-#### Play Current Challenge Endpoint Resquest Headers
+#### Create a Challenge Endpoint Resquest Headers
 
 - `Content-Type: application/json`
 
-#### Play Current Challenge Endpoint Resquest Body
+#### Create a Challenge Endpoint Resquest Body
 
 ```json
 {
@@ -337,26 +335,25 @@ The MTLove API is a RESTful API that allows you to interact with Generative arti
 }
 ```
 
-#### Play Current Challenge Endpoint Resquest Body Field Description
+#### Create a Challenge Endpoint Resquest Body Field Description
 
 - `message`: User's input
 - `previousMessages`: **Optional**, Messages history, this make sure that AI understand the content
   - `role`: The role of current message
   - `content`: The content of current role
 
-#### Play Current Challenge Endpoint Response
+#### Create a Challenge Endpoint Response
 
 ```json
 {
   "aiResponse": "But we planned this weeks ago. It's really important to me.",
   "score": -5,
-  "challengeStatus": "ongoing",
+  "challengeStatus": "ongoing"
 }
 ```
 
-#### Play Current Challenge Endpoint Response Field Description
+#### Create a Challenge Endpoint Response Field Description
 
 - `aiResponse`: AI's response
 - `score`: The score of each message
 - `challengeStatus`: `ongoing`, `win`, `lose`
-
