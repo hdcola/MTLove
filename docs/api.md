@@ -22,6 +22,10 @@
       - [Scenario List Endpoint](#scenario-list-endpoint)
       - [Scenario List Success Response](#scenario-list-success-response)
       - [Scenario List Success Response Field Description](#scenario-list-success-response-field-description)
+    - [Get a Scenario](#get-a-scenario)
+      - [Get a Scenario Endpoint](#get-a-scenario-endpoint)
+      - [Get a Scenario Endpoint Response](#get-a-scenario-endpoint-response)
+      - [Get a Scenario Endpoint Response Field Description](#get-a-scenario-endpoint-response-field-description)
     - [Create a new Scenario](#create-a-new-scenario)
       - [New scenario Endpoint](#new-scenario-endpoint)
       - [New scenario Request Headers](#new-scenario-request-headers)
@@ -30,10 +34,13 @@
       - [New scenario Success Response](#new-scenario-success-response)
       - [New scenario Success Response Field Description](#new-scenario-success-response-field-description)
   - [Challenge](#challenge)
-    - [Current Challenge](#current-challenge)
-      - [Current Challenge Endpoint](#current-challenge-endpoint)
-      - [Current Challenge Endpoint Response](#current-challenge-endpoint-response)
-      - [Current Challenge Endpoint Response Field Description](#current-challenge-endpoint-response-field-description)
+    - [Create a Challenge](#create-a-challenge)
+      - [Create a Challenge Endpoint](#create-a-challenge-endpoint)
+      - [Create a Challenge Endpoint Resquest Headers](#create-a-challenge-endpoint-resquest-headers)
+      - [Create a Challenge Endpoint Resquest Body](#create-a-challenge-endpoint-resquest-body)
+      - [Create a Challenge Endpoint Resquest Body Field Description](#create-a-challenge-endpoint-resquest-body-field-description)
+      - [Create a Challenge Endpoint Response](#create-a-challenge-endpoint-response)
+      - [Create a Challenge Endpoint Response Field Description](#create-a-challenge-endpoint-response-field-description)
 
 ---
 
@@ -178,8 +185,8 @@ The MTLove API is a RESTful API that allows you to interact with Generative arti
   "createdAt": "2025-02-15T21:08:00.000",
   "author": {
       "id": "678c5sca54sac52qf1000",
-      "username": "test",
-      "email": "test@gmail.com",
+      "username": "John Doe",
+      "email": "John_doe@gmail.com",
     },
 ]
 ```
@@ -191,8 +198,39 @@ The MTLove API is a RESTful API that allows you to interact with Generative arti
 - `description`: Scenario description
 - `totalWin`: Total win of current scenarios from all users
 - `totalLost`: Total lost of current scenarios from all users
+- `createdAt`: Time Stamp of the creation
+- `author`: Object contains author's information
+  - `id`: A unique identifier of the author
+  - `username`: The name of the author
+  - `email`: The email of the author
 
----
+### Get a Scenario
+
+- Get a designated scenario from the serve
+
+#### Get a Scenario Endpoint
+
+- `GET /api/scenarios/{sid}`
+
+#### Get a Scenario Endpoint Response
+
+```json
+{
+  "sid": "67hbk42nk2j21hjkh24k",
+  "title": "Scenario 1",
+  "description": "This is the description of the scenario",
+  "system": "You are my girlfriend",
+  "start": "I've got two tickets to a movie tonight that I've been waiting two months for. Let's go now."
+}
+```
+
+#### Get a Scenario Endpoint Response Field Description
+
+- `sid`: A unique identifier for current scenario
+- `title`: A descriptive name of current scenario
+- `description`: The declarative content of the scenario
+- `system`: A descriptive content of AI's role and perspective in the conversation.
+- `start`: The first conversation started by AI and defined by user
 
 ### Create a new Scenario
 
@@ -271,30 +309,51 @@ The MTLove API is a RESTful API that allows you to interact with Generative arti
 
 ---
 
-### Current Challenge
+### Create a Challenge
 
-- Get a designated scenario from the serve
+- GamePlay
 
-#### Current Challenge Endpoint
+#### Create a Challenge Endpoint
 
-- `GET /api/scenarios/sid`
+- `POST /api/scenarios/{sid}`
 
-#### Current Challenge Endpoint Response
+#### Create a Challenge Endpoint Resquest Headers
+
+- `Content-Type: application/json`
+
+#### Create a Challenge Endpoint Resquest Body
 
 ```json
 {
-  "sid": "67hbk42nk2j21hjkh24k",
-  "title": "Scenario 1",
-  "description": "This is the description of the scenario",
-  "system": "You are my girlfriend",
-  "start": "I've got two tickets to a movie tonight that I've been waiting two months for. Let's go now."
+  "message": "I want to hang out with my friends",
+  "previousMessages": [
+    {
+      "role": "ai",
+      "content": "I've got two tickets to a movie tonight that I've been waiting two months for. Let's go now."
+    }
+  ]
 }
 ```
 
-#### Current Challenge Endpoint Response Field Description
+#### Create a Challenge Endpoint Resquest Body Field Description
 
-- `sid`: A unique identifier for current scenario
-- `title`: A descriptive name of current scenario
-- `description`: The declarative content of the scenario
-- `system`: A descriptive content of AI's role and perspective in the conversation.
-- `start`: The first conversation started by AI and defined by user
+- `message`: User's input
+- `previousMessages`: **Optional**, Messages history, this make sure that AI understand the content
+  - `role`: The role of current message
+  - `content`: The content of current role
+
+#### Create a Challenge Endpoint Response
+
+```json
+{
+  "aiResponse": "But we planned this weeks ago. It's really important to me.",
+  "score": -5,
+  "challengeStatus": "ongoing"
+}
+```
+
+#### Create a Challenge Endpoint Response Field Description
+
+- `aiResponse`: AI's response
+- `score`: The score of each message
+- `challengeStatus`: `ongoing`, `win`, `lose`
